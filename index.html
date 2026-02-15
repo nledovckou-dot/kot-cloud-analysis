@@ -1,0 +1,2925 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>КОТ — СМС-ИТ | Конкурентный и SWOT-анализ B2B SaaS-платформы охраны труда</title>
+<style>
+/* ===== CSS Variables ===== */
+:root {
+    --bg: #0D0B0E; --bg2: #151217; --bg3: #1C1820;
+    --card: #1A1620; --card2: #211D28;
+    --border: #2E2838; --border2: #3D3548;
+    --text: #E8E4EC; --text2: #A8A0B0; --text3: #706880;
+    --gold: #C9A44C; --gold2: #E8C46A;
+    --gold-bg: rgba(201,164,76,0.08); --gold-border: rgba(201,164,76,0.25);
+    --red: #D44040; --red-bg: rgba(212,64,64,0.08);
+    --green: #3DB86A; --green-bg: rgba(61,184,106,0.08);
+    --blue: #4A8FE0; --blue-bg: rgba(74,143,224,0.08);
+    --purple: #9060D0; --purple-bg: rgba(144,96,208,0.08);
+    --orange: #E08040; --orange-bg: rgba(224,128,64,0.08);
+    --teal: #40B0A0;
+}
+
+/* ===== Reset ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Container ===== */
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* ===== Hero ===== */
+.hero {
+    text-align: center;
+    padding: 80px 24px 56px;
+    background: linear-gradient(180deg, #1A1620 0%, var(--bg) 100%);
+    position: relative;
+    overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(201,164,76,0.10) 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero h1 {
+    font-size: 2.6em;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    position: relative;
+    margin-bottom: 16px;
+}
+.hero .sub {
+    font-size: 1.15em;
+    color: var(--text2);
+    margin-bottom: 8px;
+    position: relative;
+}
+.hero .date {
+    font-size: 0.9em;
+    color: var(--text3);
+    margin-bottom: 24px;
+    position: relative;
+}
+.hero .badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+.hero .hbadge {
+    display: inline-block;
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-border);
+    color: var(--gold2);
+    font-size: 0.8em;
+    padding: 5px 16px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+}
+
+/* ===== Tab Bar ===== */
+.tab-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+}
+.tab-btn {
+    background: none;
+    border: none;
+    color: var(--text3);
+    font-size: 1em;
+    padding: 16px 40px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    position: relative;
+    transition: color 0.3s ease;
+}
+.tab-btn:hover {
+    color: var(--text2);
+}
+.tab-btn.active {
+    color: var(--gold);
+}
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 1px;
+}
+
+/* ===== Tab Content ===== */
+.tab-content {
+    display: none;
+}
+.tab-content.active {
+    display: block;
+}
+
+/* ===== Section ===== */
+.section {
+    margin: 48px 0;
+}
+.section-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+.section-num {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-border);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.05em;
+}
+.section-head h2 {
+    font-size: 1.45em;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.02em;
+}
+.section-desc {
+    color: var(--text2);
+    font-size: 0.95em;
+    margin-bottom: 24px;
+    padding-left: 58px;
+}
+
+/* ===== Cards ===== */
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    border-color: var(--border2);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+.card h3 {
+    color: var(--gold2);
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.card-gold {
+    border-color: var(--gold-border);
+    background: var(--gold-bg);
+}
+.card-red {
+    border-color: rgba(212,64,64,0.25);
+    background: var(--red-bg);
+}
+.card-green {
+    border-color: rgba(61,184,106,0.25);
+    background: var(--green-bg);
+}
+.card-blue {
+    border-color: rgba(74,143,224,0.25);
+    background: var(--blue-bg);
+}
+
+/* ===== Grid Layouts ===== */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+.grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+@media (max-width: 1024px) {
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+    .grid-4 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ===== Metrics ===== */
+.metric {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+.metric .val {
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+.metric .lbl {
+    color: var(--text3);
+    font-size: 0.85em;
+}
+
+/* ===== Value Color Classes ===== */
+.val-gold { color: var(--gold); }
+.val-red { color: var(--red); }
+.val-green { color: var(--green); }
+.val-blue { color: var(--blue); }
+.val-purple { color: var(--purple); }
+.val-orange { color: var(--orange); }
+
+/* ===== Tables ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+}
+th {
+    background: var(--bg3);
+    color: var(--gold);
+    text-align: left;
+    padding: 12px 14px;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--border);
+}
+td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92em;
+    color: var(--text);
+}
+tr:hover {
+    background: var(--gold-bg);
+}
+tr:hover td {
+    box-shadow: inset 0 0 0 1px rgba(201,164,76,0.05);
+}
+
+/* ===== Badges ===== */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.78em;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+.b-gold { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-border); }
+.b-green { background: var(--green-bg); color: var(--green); border: 1px solid rgba(61,184,106,0.25); }
+.b-red { background: var(--red-bg); color: var(--red); border: 1px solid rgba(212,64,64,0.25); }
+.b-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid rgba(74,143,224,0.25); }
+.b-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid rgba(144,96,208,0.25); }
+.b-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid rgba(224,128,64,0.25); }
+
+/* ===== SWOT Grid ===== */
+.swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 16px 0;
+}
+.swot-box {
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid var(--border);
+}
+.swot-s {
+    background: var(--green-bg);
+    border-color: rgba(61,184,106,0.25);
+}
+.swot-w {
+    background: var(--red-bg);
+    border-color: rgba(212,64,64,0.25);
+}
+.swot-o {
+    background: var(--blue-bg);
+    border-color: rgba(74,143,224,0.25);
+}
+.swot-t {
+    background: var(--orange-bg);
+    border-color: rgba(224,128,64,0.25);
+}
+.swot-box h4 {
+    font-size: 1.05em;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.swot-s h4 { color: var(--green); }
+.swot-w h4 { color: var(--red); }
+.swot-o h4 { color: var(--blue); }
+.swot-t h4 { color: var(--orange); }
+.swot-box ul {
+    list-style: none;
+    padding: 0;
+}
+.swot-box li {
+    padding: 6px 0;
+    font-size: 0.92em;
+    line-height: 1.5;
+    color: var(--text);
+}
+.swot-s li::before { content: '+ '; color: var(--green); font-weight: 700; }
+.swot-w li::before { content: '\2212  '; color: var(--red); font-weight: 700; }
+.swot-o li::before { content: '\2191  '; color: var(--blue); font-weight: 700; }
+.swot-t li::before { content: '! '; color: var(--orange); font-weight: 700; }
+
+/* ===== Competitor Cards ===== */
+.comp-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: border-color 0.3s ease;
+}
+.comp-card:hover {
+    border-color: var(--border2);
+}
+.comp-card .name {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--gold2);
+    margin-bottom: 4px;
+}
+.comp-card .meta {
+    font-size: 0.82em;
+    color: var(--text3);
+    margin-bottom: 12px;
+}
+.comp-card .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.comp-card .stat .v {
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--text);
+}
+.comp-card .stat .l {
+    font-size: 0.75em;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* ===== Bar Rows ===== */
+.bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0;
+}
+.bar-label {
+    min-width: 140px;
+    font-size: 0.88em;
+    color: var(--text2);
+    text-align: right;
+}
+.bar-track {
+    flex: 1;
+    height: 10px;
+    background: var(--bg3);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.bar-fill {
+    height: 100%;
+    border-radius: 5px;
+    background: var(--gold);
+    transition: width 0.6s ease;
+}
+.bar-val {
+    min-width: 50px;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* ===== Threat Levels ===== */
+.threat-high { color: var(--red); font-weight: 700; }
+.threat-med { color: var(--orange); font-weight: 600; }
+.threat-low { color: var(--green); }
+
+/* ===== Timeline ===== */
+.timeline {
+    position: relative;
+    padding-left: 32px;
+    margin: 16px 0;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -25px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--bg);
+}
+.timeline-date {
+    font-size: 0.8em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.timeline-text {
+    font-size: 0.92em;
+    color: var(--text2);
+    line-height: 1.5;
+}
+
+/* ===== Info Tip ===== */
+.info-tip {
+    background: var(--blue-bg);
+    border: 1px solid rgba(74,143,224,0.25);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 0.9em;
+    color: var(--text2);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+.info-tip::before {
+    content: '\2139';
+    font-size: 1.2em;
+    color: var(--blue);
+    font-weight: 700;
+    min-width: 20px;
+}
+
+/* ===== Callouts ===== */
+.callout {
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 0.95em;
+    color: var(--text);
+    border-left: 4px solid var(--gold);
+}
+.callout-red {
+    background: var(--red-bg);
+    border-color: rgba(212,64,64,0.25);
+    border-left-color: var(--red);
+}
+.callout-green {
+    background: var(--green-bg);
+    border-color: rgba(61,184,106,0.25);
+    border-left-color: var(--green);
+}
+
+/* ===== Chart Container ===== */
+.chart-container {
+    background: var(--card);
+    border: 1px solid var(--gold-border);
+    box-shadow: 0 4px 32px rgba(201,164,76,0.06);
+    border-radius: 16px;
+    padding: 36px 32px;
+    margin: 16px 0;
+}
+.chart-container h3 {
+    color: var(--gold);
+    font-size: 1.15em;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.chart-container .subtitle {
+    color: var(--text3);
+    font-size: 0.85em;
+    margin-bottom: 20px;
+}
+.chart-svg {
+    width: 100%;
+    height: auto;
+}
+
+/* ===== Chart Animations ===== */
+@keyframes radarFadeIn {
+    0% { opacity: 0; transform: scale(0.6); }
+    100% { opacity: 1; transform: scale(1); }
+}
+@keyframes radarPulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+@keyframes barGrow {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+}
+@keyframes barGrowUp {
+    0% { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
+}
+@keyframes donutFadeIn {
+    0% { opacity: 0; stroke-dashoffset: 300; }
+    100% { opacity: 1; stroke-dashoffset: 0; }
+}
+@keyframes dotPop {
+    0% { opacity: 0; transform: scale(0); }
+    60% { transform: scale(1.3); }
+    100% { opacity: 1; transform: scale(1); }
+}
+@keyframes glowPulse {
+    0%, 100% { filter: drop-shadow(0 0 4px rgba(201,164,76,0.4)); }
+    50% { filter: drop-shadow(0 0 12px rgba(201,164,76,0.8)); }
+}
+
+/* ===== Chart Elements ===== */
+.radar-area {
+    animation: radarFadeIn 0.8s ease-out forwards;
+    transform-origin: center;
+}
+.bar-animated {
+    animation: barGrow 0.8s ease-out forwards;
+    transform-origin: left center;
+}
+.vbar-animated {
+    animation: barGrowUp 0.8s ease-out forwards;
+    transform-origin: bottom center;
+}
+.donut-segment {
+    animation: donutFadeIn 1s ease-out forwards;
+}
+.scatter-dot {
+    animation: dotPop 0.5s ease-out forwards;
+    opacity: 0;
+}
+.scatter-dot-kot {
+    animation: dotPop 0.5s ease-out forwards, glowPulse 2s ease-in-out infinite;
+    opacity: 0;
+}
+
+/* ===== Chart Legend ===== */
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+    justify-content: center;
+}
+.leg-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82em;
+    color: var(--text2);
+}
+.leg-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+/* ===== Overview Specific ===== */
+.ov-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 16px 0;
+}
+.ov-grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin: 16px 0;
+}
+.ov-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 16px 0;
+}
+.ov-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 16px 0;
+}
+.ov-stat {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+}
+.ov-stat .num {
+    font-size: 2.2em;
+    font-weight: 700;
+    line-height: 1.15;
+}
+.ov-stat .lbl {
+    font-size: 0.8em;
+    color: var(--text3);
+    margin-top: 4px;
+}
+.ov-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 12px 0;
+}
+.ov-verdict {
+    background: var(--card);
+    border: 1px solid var(--gold-border);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 16px 0;
+    border-left: 4px solid var(--gold);
+}
+.ov-verdict h3 {
+    color: var(--gold);
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.ov-verdict p {
+    color: var(--text2);
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+
+/* ===== Works Grid ===== */
+.works-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 12px 0;
+}
+.works-item {
+    background: var(--card);
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+}
+.works-item.not-works {
+    border-left-color: var(--red);
+}
+.works-item h4 {
+    font-size: 0.95em;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+.works-item p {
+    color: var(--text2);
+    font-size: 0.85em;
+    line-height: 1.5;
+}
+
+/* ===== Strategy Cards ===== */
+.strat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 20px 20px 56px;
+    position: relative;
+    margin: 12px 0;
+}
+.strat-card.strat-green { border-left: 4px solid var(--green); }
+.strat-card.strat-blue { border-left: 4px solid var(--blue); }
+.strat-card.strat-gold { border-left: 4px solid var(--gold); }
+.strat-card.strat-purple { border-left: 4px solid var(--purple); }
+.strat-card.strat-orange { border-left: 4px solid var(--orange); }
+.strat-num {
+    position: absolute;
+    left: 14px;
+    top: 18px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-border);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85em;
+}
+
+/* ===== Correlation & Heatmap ===== */
+.corr-high { color: var(--green); font-weight: 700; }
+.corr-med { color: var(--gold); font-weight: 600; }
+.corr-low { color: var(--text3); }
+.corr-neg { color: var(--red); font-weight: 600; }
+
+.pos { color: var(--green); font-weight: 700; }
+.neg { color: var(--red); font-weight: 700; }
+
+.heatmap-cell-0 { background: var(--bg3); }
+.heatmap-cell-1 { background: rgba(201,164,76,0.12); }
+.heatmap-cell-2 { background: rgba(201,164,76,0.24); }
+.heatmap-cell-3 { background: rgba(201,164,76,0.40); }
+.heatmap-cell-4 { background: rgba(201,164,76,0.60); color: #0D0B0E; font-weight: 700; }
+
+/* ===== Footer ===== */
+footer {
+    text-align: center;
+    color: var(--text3);
+    font-size: 0.85em;
+    padding: 40px 24px;
+    margin-top: 48px;
+    border-top: 1px solid var(--border);
+}
+
+/* ===== Responsive: max-width 1024px ===== */
+@media (max-width: 1024px) {
+    .ov-grid { grid-template-columns: repeat(2, 1fr); }
+    .ov-grid-5 { grid-template-columns: repeat(3, 1fr); }
+    .ov-grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .works-grid { grid-template-columns: 1fr 1fr; }
+    .chart-container { padding: 24px 18px; }
+    .bar-label { min-width: 100px; }
+}
+
+/* ===== Responsive: max-width 768px ===== */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 1.6em;
+        letter-spacing: 0.08em;
+    }
+    .hero { padding: 48px 16px 36px; }
+    .hero .sub { font-size: 0.95em; }
+    .container { padding: 16px; }
+    .swot-grid { grid-template-columns: 1fr; }
+    .ov-grid { grid-template-columns: 1fr; }
+    .ov-grid-5 { grid-template-columns: repeat(2, 1fr); }
+    .ov-grid-3 { grid-template-columns: 1fr; }
+    .ov-grid-2 { grid-template-columns: 1fr; }
+    .works-grid { grid-template-columns: 1fr; }
+    .tab-btn { padding: 12px 20px; font-size: 0.9em; }
+    .section-head h2 { font-size: 1.15em; }
+    .section-num { width: 34px; height: 34px; min-width: 34px; font-size: 0.9em; }
+    .section-desc { padding-left: 50px; }
+    .bar-row { flex-wrap: wrap; }
+    .bar-label { min-width: 100%; text-align: left; }
+    .comp-card .stats { gap: 10px; }
+    .chart-container { padding: 20px 14px; }
+    .ov-stat .num { font-size: 1.6em; }
+    .metric .val { font-size: 1.5em; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Hero ===== -->
+<div class="hero">
+    <h1>КОТ — СМС-ИТ</h1>
+    <div class="sub">Конкурентный и SWOT-анализ B2B SaaS-платформы охраны труда</div>
+    <div class="date">kot.cloud &middot; ООО &laquo;СМС-Информационные Технологии&raquo; &middot; ИНН 6312052132 &middot; Февраль 2026</div>
+    <div class="badges">
+        <span class="hbadge">ФНС 2022&ndash;2024</span>
+        <span class="hbadge">10 конкурентов</span>
+        <span class="hbadge">14+ модулей</span>
+        <span class="hbadge">8 SVG-графиков</span>
+        <span class="hbadge">B2B SaaS</span>
+    </div>
+</div>
+
+<!-- ===== Tab Bar ===== -->
+<div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('overview')">Обзор</button>
+    <button class="tab-btn" onclick="switchTab('full')">Полный анализ</button>
+</div>
+
+<!-- ===== Overview Tab ===== -->
+<div class="tab-content active" id="tab-overview">
+<div class="container">
+<!-- ==================== TAB: OVERVIEW ==================== -->
+
+<!-- Key Verdict -->
+<section id="ov-verdict">
+    <h2 style="color:var(--gold);margin-bottom:16px">Ключевой вердикт</h2>
+    <div class="card" style="border-left:4px solid var(--gold);padding:20px 24px;font-size:1.05em;line-height:1.7;color:var(--text2)">
+        <strong style="color:var(--gold)">КОТ</strong> — быстрорастущий B2B SaaS-продукт (CAGR ~28%, выручка 718&nbsp;млн&nbsp;₽ в 2024) с сильной клиентской базой в промышленном секторе (Северсталь, Магнит, Нордголд). Однако доля рынка (~12–15%) ограничена доминированием экосистемы 1С (~35%). Маржинальность (~7%) ниже типичной для SaaS, что указывает на потенциал оптимизации.
+    </div>
+</section>
+
+<!-- 5 Key Metrics -->
+<section style="margin-top:36px">
+    <h2 style="color:var(--gold);margin-bottom:16px">Ключевые метрики</h2>
+    <div class="ov-grid ov-grid-5">
+        <div class="ov-stat">
+            <div class="num val-gold">718.5М ₽</div>
+            <div class="lbl">Выручка 2024</div>
+        </div>
+        <div class="ov-stat">
+            <div class="num val-green">+28.0%</div>
+            <div class="lbl">Рост YoY</div>
+        </div>
+        <div class="ov-stat">
+            <div class="num val-blue">100 000+</div>
+            <div class="lbl">Пользователей</div>
+        </div>
+        <div class="ov-stat">
+            <div class="num val-purple">~12–15%</div>
+            <div class="lbl">Доля рынка</div>
+        </div>
+        <div class="ov-stat">
+            <div class="num val-orange">14+</div>
+            <div class="lbl">Модулей платформы</div>
+        </div>
+    </div>
+</section>
+
+<!-- What Works / What Doesn't -->
+<section style="margin-top:36px">
+    <h2 style="color:var(--gold);margin-bottom:16px">Что работает / Что нет</h2>
+    <div class="works-grid">
+        <!-- What Works -->
+        <div>
+            <h3 style="color:var(--green);margin-bottom:14px">&#10003; Что работает</h3>
+
+            <div class="works-item" style="border-left:4px solid var(--green)">
+                <h4 style="color:var(--green)">Промышленные клиенты</h4>
+                <p>Северсталь, Магнит, Нордголд, Ново Нордиск — якорные enterprise-клиенты</p>
+            </div>
+
+            <div class="works-item" style="border-left:4px solid var(--green)">
+                <h4 style="color:var(--green)">Органический рост +28%</h4>
+                <p>Стабильный рост без агрессивного маркетинга</p>
+            </div>
+
+            <div class="works-item" style="border-left:4px solid var(--green)">
+                <h4 style="color:var(--green)">Полнота платформы</h4>
+                <p>14+ модулей покрывают весь цикл охраны труда</p>
+            </div>
+
+            <div class="works-item" style="border-left:4px solid var(--green)">
+                <h4 style="color:var(--green)">Реестр отечественного ПО</h4>
+                <p>Конкурентное преимущество при госзакупках</p>
+            </div>
+
+            <div class="works-item" style="border-left:4px solid var(--green)">
+                <h4 style="color:var(--green)">20+ лет на рынке</h4>
+                <p>Глубокая экспертиза и зрелость продукта</p>
+            </div>
+        </div>
+
+        <!-- What Doesn't Work -->
+        <div>
+            <h3 style="color:var(--red);margin-bottom:14px">&#10007; Что не работает</h3>
+
+            <div class="works-item" style="border-left:4px solid var(--red)">
+                <h4 style="color:var(--red)">Маржа ~7%</h4>
+                <p>Критически низкая для SaaS (норма 15-25%)</p>
+            </div>
+
+            <div class="works-item" style="border-left:4px solid var(--red)">
+                <h4 style="color:var(--red)">Нет публичного прайса</h4>
+                <p>Клиенты уходят к конкурентам с прозрачным ценообразованием</p>
+            </div>
+
+            <div class="works-item" style="border-left:4px solid var(--red)">
+                <h4 style="color:var(--red)">Слабый digital-маркетинг</h4>
+                <p>Минимальное присутствие в digital-каналах</p>
+            </div>
+
+            <div class="works-item" style="border-left:4px solid var(--red)">
+                <h4 style="color:var(--red)">Зависимость от СМС-Автоматизация</h4>
+                <p>70% принадлежит головной компании</p>
+            </div>
+
+            <div class="works-item" style="border-left:4px solid var(--red)">
+                <h4 style="color:var(--red)">Мобильное отставание</h4>
+                <p>SafetyCulture задаёт стандарт mobile-first</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Top 3 Strategic Actions -->
+<section style="margin-top:36px">
+    <h2 style="color:var(--gold);margin-bottom:16px">Топ-3 стратегических действия</h2>
+
+    <div class="card" style="border-left:4px solid var(--gold);padding-left:28px;margin:12px 0">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:8px">
+            <span style="background:var(--gold);color:var(--bg);width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9em;flex-shrink:0">1</span>
+            <h3 style="color:var(--gold2);font-size:1.05em">Запустить прозрачный прайсинг + digital-маркетинг</h3>
+        </div>
+        <p style="color:var(--text2);font-size:0.9em">Публиковать тарифные планы на сайте (как MD Audit), запустить SEO/контент-маркетинг. Ожидаемый эффект: +20-30% входящих лидов.</p>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--gold);padding-left:28px;margin:12px 0">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:8px">
+            <span style="background:var(--gold);color:var(--bg);width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9em;flex-shrink:0">2</span>
+            <h3 style="color:var(--gold2);font-size:1.05em">Разработать AI-модули предиктивной аналитики</h3>
+        </div>
+        <p style="color:var(--text2);font-size:0.9em">Предсказание инцидентов на основе исторических данных + computer vision для аудитов. Дифференциация от 1С и позиционирование как инновационный лидер.</p>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--gold);padding-left:28px;margin:12px 0">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:8px">
+            <span style="background:var(--gold);color:var(--bg);width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9em;flex-shrink:0">3</span>
+            <h3 style="color:var(--gold2);font-size:1.05em">Экспансия в СНГ (Казахстан, Беларусь)</h3>
+        </div>
+        <p style="color:var(--text2);font-size:0.9em">Схожая нормативная база, русскоязычный рынок, низкий барьер входа. Потенциал +15-20% к ARR.</p>
+    </div>
+</section>
+
+</div><!-- /.container -->
+</div><!-- /#tab-overview -->
+<!-- ==================== TAB: FULL ANALYSIS ==================== -->
+<div class="tab-content" id="tab-full">
+<div class="container">
+
+<!-- ============================================================= -->
+<!-- PART I — МАКРО: Рынок цифровизации охраны труда               -->
+<!-- ============================================================= -->
+
+<section id="part-macro">
+
+    <!-- ─── 1.1 Обзор рынка OHS-tech ─── -->
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px">
+        <span style="background:var(--gold);color:var(--bg);width:38px;height:38px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1em;flex-shrink:0">1</span>
+        <h2 style="color:var(--gold);margin:0;font-size:1.35em">Рынок цифровизации охраны труда в России</h2>
+    </div>
+
+    <p style="color:var(--text2);font-size:1.02em;line-height:1.75;margin-bottom:20px">
+        Российский рынок цифровых решений в области охраны труда и промышленной безопасности (OHS-tech) переживает период активного роста, обусловленный регуляторным давлением, цифровой трансформацией промышленности и ESG-трендами.
+    </p>
+
+    <div class="info-tip" style="background:rgba(74,143,224,0.08);border-left:4px solid var(--blue);padding:14px 18px;border-radius:8px;margin-bottom:28px">
+        <span style="color:var(--blue);font-weight:700">&#9432; OHS-tech</span>
+        <span style="color:var(--text2);font-size:0.95em"> (Occupational Health &amp; Safety Technology) — цифровые решения для управления охраной труда, промышленной безопасностью и экологией на предприятиях.</span>
+    </div>
+
+    <!-- 4-metric grid -->
+    <div class="ov-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px">
+        <div class="ov-stat">
+            <div class="num val-gold">~45–55 млрд ₽</div>
+            <div class="lbl">Объём рынка OHS-tech РФ (2025)</div>
+        </div>
+        <div class="ov-stat">
+            <div class="num val-green">12–15%</div>
+            <div class="lbl">CAGR 2025–2033</div>
+        </div>
+        <div class="ov-stat">
+            <div class="num val-blue">5.24 трлн ₽</div>
+            <div class="lbl">Инвестиции в цифровизацию РФ</div>
+        </div>
+        <div class="ov-stat">
+            <div class="num val-purple">+29.5%</div>
+            <div class="lbl">Рост инвестиций YoY</div>
+        </div>
+    </div>
+
+    <!-- SVG Chart: Grouped Bars — Market Growth -->
+    <div class="chart-container">
+        <h3>Динамика рынка OHS-tech в России</h3>
+        <div class="subtitle">Объём рынка цифровых решений охраны труда, млрд ₽ (оценка)</div>
+        <svg class="chart-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background grid -->
+            <line x1="80" y1="50" x2="80" y2="340" stroke="#2E2838" stroke-width="1"/>
+            <line x1="80" y1="340" x2="760" y2="340" stroke="#2E2838" stroke-width="1"/>
+            <!-- Y-axis labels -->
+            <text x="70" y="55" fill="#706880" font-size="11" text-anchor="end">60</text>
+            <text x="70" y="113" fill="#706880" font-size="11" text-anchor="end">50</text>
+            <text x="70" y="171" fill="#706880" font-size="11" text-anchor="end">40</text>
+            <text x="70" y="229" fill="#706880" font-size="11" text-anchor="end">30</text>
+            <text x="70" y="287" fill="#706880" font-size="11" text-anchor="end">20</text>
+            <text x="70" y="340" fill="#706880" font-size="11" text-anchor="end">10</text>
+            <!-- Grid lines -->
+            <line x1="80" y1="55" x2="760" y2="55" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+            <line x1="80" y1="113" x2="760" y2="113" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+            <line x1="80" y1="171" x2="760" y2="171" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+            <line x1="80" y1="229" x2="760" y2="229" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+            <line x1="80" y1="287" x2="760" y2="287" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+            <!-- 2022 bars: SaaS=18, On-prem=12 -->
+            <rect x="110" y="236" width="50" height="104" rx="4" fill="#C9A44C" class="vbar-animated" style="animation-delay:0.1s"/>
+            <rect x="165" y="271" width="50" height="69" rx="4" fill="#4A8FE0" class="vbar-animated" style="animation-delay:0.15s"/>
+            <text x="152" y="365" fill="#A8A0B0" font-size="12" text-anchor="middle">2022</text>
+            <!-- 2023 bars: SaaS=24, On-prem=14 -->
+            <rect x="260" y="201" width="50" height="139" rx="4" fill="#C9A44C" class="vbar-animated" style="animation-delay:0.25s"/>
+            <rect x="315" y="259" width="50" height="81" rx="4" fill="#4A8FE0" class="vbar-animated" style="animation-delay:0.3s"/>
+            <text x="302" y="365" fill="#A8A0B0" font-size="12" text-anchor="middle">2023</text>
+            <!-- 2024 bars: SaaS=32, On-prem=16 -->
+            <rect x="410" y="155" width="50" height="185" rx="4" fill="#C9A44C" class="vbar-animated" style="animation-delay:0.4s"/>
+            <rect x="465" y="247" width="50" height="93" rx="4" fill="#4A8FE0" class="vbar-animated" style="animation-delay:0.45s"/>
+            <text x="452" y="365" fill="#A8A0B0" font-size="12" text-anchor="middle">2024</text>
+            <!-- 2025E bars: SaaS=38, On-prem=17 -->
+            <rect x="560" y="120" width="50" height="220" rx="4" fill="#C9A44C" opacity="0.7" class="vbar-animated" style="animation-delay:0.55s"/>
+            <rect x="615" y="241" width="50" height="99" rx="4" fill="#4A8FE0" opacity="0.7" class="vbar-animated" style="animation-delay:0.6s"/>
+            <text x="602" y="365" fill="#A8A0B0" font-size="12" text-anchor="middle">2025E</text>
+            <!-- Bar value labels -->
+            <text x="135" y="230" fill="#E8C46A" font-size="11" text-anchor="middle" font-weight="600">18</text>
+            <text x="190" y="265" fill="#4A8FE0" font-size="11" text-anchor="middle" font-weight="600">12</text>
+            <text x="285" y="195" fill="#E8C46A" font-size="11" text-anchor="middle" font-weight="600">24</text>
+            <text x="340" y="253" fill="#4A8FE0" font-size="11" text-anchor="middle" font-weight="600">14</text>
+            <text x="435" y="149" fill="#E8C46A" font-size="11" text-anchor="middle" font-weight="600">32</text>
+            <text x="490" y="241" fill="#4A8FE0" font-size="11" text-anchor="middle" font-weight="600">16</text>
+            <text x="585" y="114" fill="#E8C46A" font-size="11" text-anchor="middle" font-weight="600">38</text>
+            <text x="640" y="235" fill="#4A8FE0" font-size="11" text-anchor="middle" font-weight="600">17</text>
+        </svg>
+        <div class="chart-legend">
+            <div class="leg-item"><div class="leg-swatch" style="background:#C9A44C"></div>SaaS-решения</div>
+            <div class="leg-item"><div class="leg-swatch" style="background:#4A8FE0"></div>On-premise решения</div>
+        </div>
+    </div>
+
+    <!-- ─── 1.2 Регуляторные тренды ─── -->
+    <h3 style="color:var(--gold2);margin-top:40px;margin-bottom:18px;font-size:1.15em">1.2&ensp;Регуляторные тренды</h3>
+
+    <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px">
+
+        <div class="card" style="border-left:4px solid var(--blue);padding:18px 20px">
+            <h4 style="color:var(--blue);margin-bottom:8px;font-size:1em">Риск-ориентированный подход (с 2024)</h4>
+            <p style="color:var(--text2);font-size:0.92em;line-height:1.65;margin:0">
+                Переход от проверочных листов к оценке рисков. Увеличивает спрос на аналитические инструменты и модули оценки профессиональных рисков в OHS-системах.
+            </p>
+        </div>
+
+        <div class="card" style="border-left:4px solid var(--green);padding:18px 20px">
+            <h4 style="color:var(--green);margin-bottom:8px;font-size:1em">ФГИС СОУТ и цифровые подписи</h4>
+            <p style="color:var(--text2);font-size:0.92em;line-height:1.65;margin:0">
+                Обязательная интеграция с Федеральной государственной информационной системой учёта результатов СОУТ. Требует API-интеграции от всех поставщиков OHS-решений.
+            </p>
+        </div>
+
+        <div class="card" style="border-left:4px solid var(--gold);padding:18px 20px">
+            <h4 style="color:var(--gold);margin-bottom:8px;font-size:1em">Импортозамещение и реестр ПО</h4>
+            <p style="color:var(--text2);font-size:0.92em;line-height:1.65;margin:0">
+                Государственные и окологосударственные компании обязаны использовать ПО из реестра отечественного софта. Даёт преимущество российским разработчикам перед SafetyCulture и другими.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- ─── 1.3 Технологические тренды ─── -->
+    <h3 style="color:var(--gold2);margin-top:40px;margin-bottom:18px;font-size:1.15em">1.3&ensp;Технологические тренды</h3>
+
+    <div class="grid-2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:32px">
+
+        <div class="card" style="padding:18px 20px">
+            <h4 style="color:var(--gold2);margin-bottom:8px;font-size:1em">AI/ML в охране труда</h4>
+            <p style="color:var(--text2);font-size:0.92em;line-height:1.65;margin:0">
+                Предиктивная аналитика инцидентов, NLP для обработки нормативных документов, computer vision для аудитов безопасности.
+            </p>
+        </div>
+
+        <div class="card" style="padding:18px 20px">
+            <h4 style="color:var(--gold2);margin-bottom:8px;font-size:1em">Mobile-first</h4>
+            <p style="color:var(--text2);font-size:0.92em;line-height:1.65;margin:0">
+                Полевые инспекции, фотофиксация, чек-листы на мобильных устройствах. SafetyCulture задаёт стандарт.
+            </p>
+        </div>
+
+        <div class="card" style="padding:18px 20px">
+            <h4 style="color:var(--gold2);margin-bottom:8px;font-size:1em">IoT и носимые устройства</h4>
+            <p style="color:var(--text2);font-size:0.92em;line-height:1.65;margin:0">
+                Датчики на касках, газоанализаторы, геопозиционирование сотрудников в опасных зонах.
+            </p>
+        </div>
+
+        <div class="card" style="padding:18px 20px">
+            <h4 style="color:var(--gold2);margin-bottom:8px;font-size:1em">Cloud-native и API-first</h4>
+            <p style="color:var(--text2);font-size:0.92em;line-height:1.65;margin:0">
+                Переход от монолитных решений к микросервисной архитектуре, открытые API для интеграций.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- ─── 1.4 HR-рынок ─── -->
+    <h3 style="color:var(--gold2);margin-top:40px;margin-bottom:18px;font-size:1.15em">1.4&ensp;HR-рынок</h3>
+
+    <div class="ov-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px">
+        <div class="ov-stat">
+            <div class="num val-gold">150–250К ₽/мес</div>
+            <div class="lbl">Зарплата специалиста ОТ (Москва)</div>
+        </div>
+        <div class="ov-stat">
+            <div class="num val-red">500–700К</div>
+            <div class="lbl">Дефицит IT-кадров в РФ</div>
+        </div>
+        <div class="ov-stat">
+            <div class="num val-blue">1 297+</div>
+            <div class="lbl">Вакансий ОТ в Москве</div>
+        </div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--gold);padding:16px 20px;margin-bottom:32px">
+        <p style="color:var(--text2);font-size:0.95em;line-height:1.7;margin:0">
+            <strong style="color:var(--gold)">Кадровый дефицит — двойная проблема:</strong> не хватает как IT-специалистов для разработки OHS-решений, так и специалистов по охране труда, что повышает спрос на автоматизацию рутинных задач.
+        </p>
+    </div>
+
+</section>
+
+<!-- ============================================================= -->
+<!-- PART II — МЕЗО: Конкурентный анализ                           -->
+<!-- ============================================================= -->
+
+<section id="part-meso">
+
+    <!-- ─── 2.1 Перцептуальная карта ─── -->
+    <div class="section">
+        <div class="section-head">
+            <span class="section-num">2</span>
+            <h2>Конкурентный ландшафт OHS-tech</h2>
+        </div>
+
+        <div class="info-tip" style="background:rgba(74,143,224,0.08);border-left:4px solid var(--blue);padding:14px 18px;border-radius:8px;margin-bottom:24px">
+            <span style="color:var(--blue);font-weight:700">&#9432; Перцептуальная карта</span>
+            <span style="color:var(--text2);font-size:0.95em"> — визуализация позиций конкурентов в координатах &laquo;Цена&raquo; (ось X, дороже &rarr;) и &laquo;Функциональность&raquo; (ось Y, больше &uarr;). Размер круга пропорционален доле рынка. Идеальная позиция для клиента &mdash; левый верхний угол (много функций, низкая цена).</span>
+        </div>
+
+        <div class="chart-container">
+            <h3>Перцептуальная карта: Цена vs. Функциональность</h3>
+            <div class="subtitle">Российский рынок OHS-tech, 2025&ndash;2026. Размер точки ~ доля рынка</div>
+
+            <svg class="chart-svg" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="500" fill="none"/>
+
+                <!-- Grid lines (dashed) -->
+                <line x1="100" y1="50" x2="100" y2="440" stroke="#2E2838" stroke-width="1"/>
+                <line x1="100" y1="440" x2="750" y2="440" stroke="#2E2838" stroke-width="1"/>
+
+                <!-- Horizontal grid -->
+                <line x1="100" y1="50" x2="750" y2="50" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+                <line x1="100" y1="115" x2="750" y2="115" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+                <line x1="100" y1="180" x2="750" y2="180" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+                <line x1="100" y1="245" x2="750" y2="245" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+                <line x1="100" y1="310" x2="750" y2="310" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+                <line x1="100" y1="375" x2="750" y2="375" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+
+                <!-- Vertical grid -->
+                <line x1="200" y1="50" x2="200" y2="440" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+                <line x1="300" y1="50" x2="300" y2="440" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+                <line x1="400" y1="50" x2="400" y2="440" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+                <line x1="500" y1="50" x2="500" y2="440" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+                <line x1="600" y1="50" x2="600" y2="440" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+                <line x1="700" y1="50" x2="700" y2="440" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+
+                <!-- Axis labels -->
+                <text x="425" y="485" fill="#A8A0B0" font-size="13" text-anchor="middle" font-weight="600">Цена &rarr;</text>
+                <text x="30" y="245" fill="#A8A0B0" font-size="13" text-anchor="middle" font-weight="600" transform="rotate(-90,30,245)">Функциональность &rarr;</text>
+
+                <!-- Axis tick labels - X -->
+                <text x="100" y="460" fill="#706880" font-size="10" text-anchor="middle">Бесплатно</text>
+                <text x="300" y="460" fill="#706880" font-size="10" text-anchor="middle">Средняя</text>
+                <text x="500" y="460" fill="#706880" font-size="10" text-anchor="middle">Высокая</text>
+                <text x="700" y="460" fill="#706880" font-size="10" text-anchor="middle">Премиум</text>
+
+                <!-- Axis tick labels - Y -->
+                <text x="90" y="440" fill="#706880" font-size="10" text-anchor="end">Базовые</text>
+                <text x="90" y="310" fill="#706880" font-size="10" text-anchor="end">Средние</text>
+                <text x="90" y="180" fill="#706880" font-size="10" text-anchor="end">Продв.</text>
+                <text x="90" y="50" fill="#706880" font-size="10" text-anchor="end">Полные</text>
+
+                <!-- Quadrant labels (faded) -->
+                <text x="190" y="100" fill="#2E2838" font-size="18" font-weight="700" text-anchor="middle">BEST VALUE</text>
+                <text x="620" y="400" fill="#2E2838" font-size="18" font-weight="700" text-anchor="middle">OVERPRICED</text>
+
+                <!-- ═══ Competitor dots ═══ -->
+
+                <!-- SUOT-Online -->
+                <circle cx="150" cy="320" r="12" fill="#E08040" opacity="0.8" class="scatter-dot" style="animation-delay:0.1s"/>
+                <text x="168" y="316" fill="#E08040" font-size="10" font-weight="600">SUOT-Online</text>
+
+                <!-- MD Audit -->
+                <circle cx="250" cy="250" r="16" fill="#3DB86A" opacity="0.8" class="scatter-dot" style="animation-delay:0.2s"/>
+                <text x="270" y="246" fill="#3DB86A" font-size="10" font-weight="600">MD Audit</text>
+
+                <!-- EcoStandard -->
+                <circle cx="300" cy="200" r="18" fill="#9060D0" opacity="0.8" class="scatter-dot" style="animation-delay:0.3s"/>
+                <text x="322" y="196" fill="#9060D0" font-size="10" font-weight="600">EcoStandard</text>
+
+                <!-- SafetyCulture -->
+                <circle cx="350" cy="130" r="20" fill="#40B0A0" opacity="0.8" class="scatter-dot" style="animation-delay:0.4s"/>
+                <text x="374" y="126" fill="#40B0A0" font-size="10" font-weight="600">SafetyCulture</text>
+
+                <!-- EHSM -->
+                <circle cx="380" cy="230" r="14" fill="#A8A0B0" opacity="0.7" class="scatter-dot" style="animation-delay:0.45s"/>
+                <text x="398" y="226" fill="#A8A0B0" font-size="10">EHSM</text>
+
+                <!-- КОТ (highlighted) -->
+                <circle cx="420" cy="120" r="22" fill="#C9A44C" opacity="0.9" class="scatter-dot-kot" style="animation-delay:0.5s"/>
+                <text x="446" y="116" fill="#C9A44C" font-size="11" font-weight="700">KOT</text>
+
+                <!-- Visitech -->
+                <circle cx="480" cy="280" r="14" fill="#706880" opacity="0.7" class="scatter-dot" style="animation-delay:0.55s"/>
+                <text x="498" y="276" fill="#706880" font-size="10">Visitech</text>
+
+                <!-- 1С:EHS КОРП -->
+                <circle cx="500" cy="90" r="28" fill="#D44040" opacity="0.8" class="scatter-dot" style="animation-delay:0.6s"/>
+                <text x="532" y="86" fill="#D44040" font-size="11" font-weight="700">1C:EHS KOPP</text>
+
+                <!-- БРеалИТ -->
+                <circle cx="550" cy="150" r="24" fill="#4A8FE0" opacity="0.8" class="scatter-dot" style="animation-delay:0.7s"/>
+                <text x="578" y="146" fill="#4A8FE0" font-size="11" font-weight="600">БPeaлИT</text>
+            </svg>
+
+            <!-- Legend -->
+            <div class="chart-legend">
+                <div class="leg-item"><span class="leg-swatch" style="background:#C9A44C;width:14px;height:14px;border-radius:50%"></span> <span>KOT (kot.cloud)</span></div>
+                <div class="leg-item"><span class="leg-swatch" style="background:#D44040;width:14px;height:14px;border-radius:50%"></span> <span>1C:EHS KOPP</span></div>
+                <div class="leg-item"><span class="leg-swatch" style="background:#4A8FE0;width:14px;height:14px;border-radius:50%"></span> <span>БPeaлИT</span></div>
+                <div class="leg-item"><span class="leg-swatch" style="background:#3DB86A;width:14px;height:14px;border-radius:50%"></span> <span>MD Audit</span></div>
+                <div class="leg-item"><span class="leg-swatch" style="background:#9060D0;width:14px;height:14px;border-radius:50%"></span> <span>EcoStandard</span></div>
+                <div class="leg-item"><span class="leg-swatch" style="background:#E08040;width:14px;height:14px;border-radius:50%"></span> <span>SUOT-Online</span></div>
+                <div class="leg-item"><span class="leg-swatch" style="background:#40B0A0;width:14px;height:14px;border-radius:50%"></span> <span>SafetyCulture</span></div>
+                <div class="leg-item"><span class="leg-swatch" style="background:#706880;width:14px;height:14px;border-radius:50%"></span> <span>Visitech</span></div>
+                <div class="leg-item"><span class="leg-swatch" style="background:#A8A0B0;width:14px;height:14px;border-radius:50%"></span> <span>EHSM</span></div>
+            </div>
+        </div>
+
+        <div class="card" style="border-left:4px solid var(--gold);padding:16px 20px;margin-top:20px">
+            <p style="color:var(--text2);font-size:0.92em;line-height:1.7;margin:0">
+                <strong style="color:var(--gold)">Вывод:</strong> КОТ занимает выгодную позицию в верхнем среднем ценовом сегменте с высокой функциональностью. Основной стратегический вызов &mdash; прямая конкуренция с 1С:EHS КОРП и БРеалИТ, которые предлагают сопоставимый функционал по более высокой цене. Зона роста &mdash; усиление мобильности (где лидирует SafetyCulture) при сохранении ценового преимущества.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- ─── 2.2 Карточки конкурентов ─── -->
+    <div class="section">
+        <div class="section-head">
+            <span class="section-num">2</span>
+            <h2>Профили конкурентов</h2>
+        </div>
+
+        <p style="color:var(--text2);font-size:0.95em;margin-bottom:24px;max-width:1000px">
+            Детальные карточки 10 ключевых конкурентов КОТ на российском рынке цифровизации охраны труда.
+            Угрозы оцениваются по комбинации доли рынка, функциональности, клиентской базы и темпов роста.
+        </p>
+
+        <!-- Пара 1 -->
+        <div class="grid-2">
+            <!-- 1. 1С:EHS КОРП -->
+            <div class="comp-card" style="border-left:3px solid var(--red)">
+                <div class="name">1С:EHS КОРП <span class="badge b-red">Лидер</span></div>
+                <div class="meta">On-premise + Cloud &middot; Экосистема 1С &middot; Enterprise-сегмент</div>
+                <div class="stats">
+                    <div class="stat"><div class="v val-red">~30&ndash;35%</div><div class="l">Доля рынка</div></div>
+                    <div class="stat"><div class="v threat-high">ВЫСОКАЯ</div><div class="l">Угроза</div></div>
+                    <div class="stat"><div class="v val-blue">100+</div><div class="l">Крупных клиентов</div></div>
+                </div>
+                <p style="color:var(--text2);font-size:0.88em;line-height:1.65">
+                    Крупнейший игрок рынка OHS-tech в России. Глубокая интеграция с экосистемой 1С:ERP/ЗУП, полный цикл автоматизации ОТ и ПБ. Основной поставщик для госкорпораций.
+                    <strong style="color:var(--text)">Клиенты:</strong> Газпром, Роснефть, РЖД, Северсталь, Лукойл.
+                    <strong style="color:var(--text)">Слабость:</strong> высокая стоимость внедрения (от 5 млн ₽), сложность кастомизации, длинный цикл продаж (6&ndash;18 мес.), слабый мобильный UX.
+                </p>
+            </div>
+
+            <!-- 2. БРеалИТ -->
+            <div class="comp-card" style="border-left:3px solid var(--orange)">
+                <div class="name">БРеалИТ <span class="badge b-orange">Промбезопасность</span></div>
+                <div class="meta">On-premise + Cloud &middot; Промышленная безопасность &middot; Enterprise</div>
+                <div class="stats">
+                    <div class="stat"><div class="v val-orange">~15&ndash;20%</div><div class="l">Доля рынка</div></div>
+                    <div class="stat"><div class="v threat-high">ВЫСОКАЯ</div><div class="l">Угроза</div></div>
+                    <div class="stat"><div class="v val-blue">80+</div><div class="l">Крупных клиентов</div></div>
+                </div>
+                <p style="color:var(--text2);font-size:0.88em;line-height:1.65">
+                    Глубокая экспертиза в промышленной безопасности и атомной энергетике. Модульная платформа с акцентом на расследование инцидентов и наряд-допуски.
+                    <strong style="color:var(--text)">Клиенты:</strong> Росэнергоатом, ФосАгро, НЛМК, Металлоинвест, Евраз.
+                    <strong style="color:var(--text)">Слабость:</strong> узкая отраслевая направленность, слабый маркетинг, отсутствие мобильного приложения.
+                </p>
+            </div>
+        </div>
+
+        <!-- Пара 2 -->
+        <div class="grid-2">
+            <!-- 3. MD Audit -->
+            <div class="comp-card" style="border-left:3px solid var(--green)">
+                <div class="name">MD Audit <span class="badge b-green">Аудиты</span></div>
+                <div class="meta">Cloud (SaaS) &middot; Mobile-first &middot; SMB + Mid-market</div>
+                <div class="stats">
+                    <div class="stat"><div class="v val-green">~5&ndash;8%</div><div class="l">Доля рынка</div></div>
+                    <div class="stat"><div class="v threat-med">СРЕДНЯЯ</div><div class="l">Угроза</div></div>
+                    <div class="stat"><div class="v val-blue">500+</div><div class="l">Клиентов</div></div>
+                </div>
+                <p style="color:var(--text2);font-size:0.88em;line-height:1.65">
+                    Лучший mobile-first UX в сегменте. Рейтинг 4.9 в AppStore. Прозрачный прайс от 500 ₽/пользователь/месяц, 500+ активных клиентов. Сильный фокус на аудиты и чек-листы.
+                    <strong style="color:var(--text)">Клиенты:</strong> Х5 Group, Магнит, Додо Пицца, FixPrice.
+                    <strong style="color:var(--text)">Слабость:</strong> узкая функциональность (только аудиты), нет СОУТ, нет расследования инцидентов.
+                </p>
+            </div>
+
+            <!-- 4. EcoStandard.soft -->
+            <div class="comp-card" style="border-left:3px solid var(--purple)">
+                <div class="name">EcoStandard.soft <span class="badge b-purple">Резидент Сколково</span></div>
+                <div class="meta">Cloud (SaaS) &middot; Широкий охват &middot; SMB-сегмент</div>
+                <div class="stats">
+                    <div class="stat"><div class="v val-purple">~5&ndash;7%</div><div class="l">Доля рынка</div></div>
+                    <div class="stat"><div class="v threat-med">СРЕДНЯЯ</div><div class="l">Угроза</div></div>
+                    <div class="stat"><div class="v val-blue">22 500+</div><div class="l">Компаний</div></div>
+                </div>
+                <p style="color:var(--text2);font-size:0.88em;line-height:1.65">
+                    Максимально широкий охват SMB-сегмента. Резидент Сколково, налоговые льготы. Основной продукт &mdash; автоматизация СОУТ и документооборота по ОТ.
+                    <strong style="color:var(--text)">Клиенты:</strong> 22 500+ компаний, преимущественно SMB.
+                    <strong style="color:var(--text)">Слабость:</strong> базовая аналитика, ограниченные интеграции, слабый enterprise-функционал.
+                </p>
+            </div>
+        </div>
+
+        <!-- Пара 3 -->
+        <div class="grid-2">
+            <!-- 5. SUOT-Online -->
+            <div class="comp-card" style="border-left:3px solid var(--blue)">
+                <div class="name">SUOT-Online <span class="badge b-blue">SMB</span></div>
+                <div class="meta">Cloud (SaaS) &middot; Минималистичный &middot; Малый бизнес</div>
+                <div class="stats">
+                    <div class="stat"><div class="v val-blue">~3&ndash;5%</div><div class="l">Доля рынка</div></div>
+                    <div class="stat"><div class="v threat-low">НИЗКАЯ</div><div class="l">Угроза</div></div>
+                    <div class="stat"><div class="v val-blue">1 000+</div><div class="l">Клиентов</div></div>
+                </div>
+                <p style="color:var(--text2);font-size:0.88em;line-height:1.65">
+                    Ниша малого и среднего бизнеса. Простой интерфейс, низкий порог входа, базовая автоматизация СУОТ. Самая доступная цена на рынке.
+                    <strong style="color:var(--text)">Клиенты:</strong> малый и средний бизнес, ИП.
+                    <strong style="color:var(--text)">Слабость:</strong> минимальная функциональность, нет enterprise-фич, нет API для интеграций.
+                </p>
+            </div>
+
+            <!-- 6. EHSM (КИТ Консалтинг) -->
+            <div class="comp-card" style="border-left:3px solid var(--blue)">
+                <div class="name">EHSM (КИТ Консалтинг) <span class="badge b-blue">Консалтинг</span></div>
+                <div class="meta">Консалтинг + ПО &middot; Методология &middot; Mid-market</div>
+                <div class="stats">
+                    <div class="stat"><div class="v val-blue">~3&ndash;4%</div><div class="l">Доля рынка</div></div>
+                    <div class="stat"><div class="v threat-low">НИЗКАЯ</div><div class="l">Угроза</div></div>
+                    <div class="stat"><div class="v val-blue">50+</div><div class="l">Клиентов</div></div>
+                </div>
+                <p style="color:var(--text2);font-size:0.88em;line-height:1.65">
+                    Консалтинг + программное обеспечение. Фокус на методологии управления EHS, а не на технологической платформе. Сильная экспертная команда.
+                    <strong style="color:var(--text)">Клиенты:</strong> средний бизнес, компании с потребностью в методологическом консалтинге.
+                    <strong style="color:var(--text)">Слабость:</strong> ПО вторично к консалтингу, ограниченная масштабируемость, устаревший интерфейс.
+                </p>
+            </div>
+        </div>
+
+        <!-- Пара 4 -->
+        <div class="grid-2">
+            <!-- 7. 1С:Производственная безопасность -->
+            <div class="comp-card" style="border-left:3px solid var(--orange)">
+                <div class="name">1С:Производственная безопасность <span class="badge b-orange">1С</span></div>
+                <div class="meta">On-premise &middot; Экосистема 1С &middot; Mid-market</div>
+                <div class="stats">
+                    <div class="stat"><div class="v val-orange">~5&ndash;7%</div><div class="l">Доля рынка</div></div>
+                    <div class="stat"><div class="v threat-med">СРЕДНЯЯ</div><div class="l">Угроза</div></div>
+                    <div class="stat"><div class="v val-blue">200+</div><div class="l">Внедрений</div></div>
+                </div>
+                <p style="color:var(--text2);font-size:0.88em;line-height:1.65">
+                    Упрощённая версия 1С:EHS для среднего бизнеса. Нативная интеграция с 1С:Бухгалтерией и 1С:ЗУП. Входит в реестр российского ПО.
+                    <strong style="color:var(--text)">Клиенты:</strong> средний промышленный бизнес, использующий экосистему 1С.
+                    <strong style="color:var(--text)">Слабость:</strong> &laquo;тяжёлый&raquo; 1С-интерфейс, только on-premise, зависимость от 1С-партнёров.
+                </p>
+            </div>
+
+            <!-- 8. SafetyCulture (iAuditor) -->
+            <div class="comp-card" style="border-left:3px solid var(--green)">
+                <div class="name">SafetyCulture (iAuditor) <span class="badge b-green">Глобальный</span></div>
+                <div class="meta">Cloud (SaaS) &middot; Mobile-first &middot; Глобальный рынок</div>
+                <div class="stats">
+                    <div class="stat"><div class="v val-green">~2&ndash;3%</div><div class="l">Доля (РФ)</div></div>
+                    <div class="stat"><div class="v threat-med">СРЕДНЯЯ</div><div class="l">Угроза</div></div>
+                    <div class="stat"><div class="v val-blue">70K+</div><div class="l">Организаций (мир)</div></div>
+                </div>
+                <p style="color:var(--text2);font-size:0.88em;line-height:1.65">
+                    Глобальный лидер mobile-first OHS. 70 000+ организаций мирового уровня, эталонный UX, AI-модули (Smart Sensors, Heads Up). Сильный product-led growth.
+                    <strong style="color:var(--text)">Клиенты:</strong> глобальные корпорации (мировой рынок).
+                    <strong style="color:var(--text)">Слабость:</strong> не адаптирован под российскую нормативку (ТК РФ, приказы Минтруда), нет СОУТ, ограниченная локализация, риски санкционного ухода.
+                </p>
+            </div>
+        </div>
+
+        <!-- Пара 5 -->
+        <div class="grid-2">
+            <!-- 9. Visitech -->
+            <div class="comp-card" style="border-left:3px solid var(--blue)">
+                <div class="name">Visitech <span class="badge b-blue">Наряд-допуск</span></div>
+                <div class="meta">Cloud + On-premise &middot; Наряд-допуск &middot; Нишевой</div>
+                <div class="stats">
+                    <div class="stat"><div class="v val-blue">~2&ndash;3%</div><div class="l">Доля рынка</div></div>
+                    <div class="stat"><div class="v threat-low">НИЗКАЯ</div><div class="l">Угроза</div></div>
+                    <div class="stat"><div class="v val-blue">30+</div><div class="l">Крупных клиентов</div></div>
+                </div>
+                <p style="color:var(--text2);font-size:0.88em;line-height:1.65">
+                    Специализация на электронном наряд-допуске и управлении подрядчиками. Узкая, но глубоко проработанная ниша. NFC/RFID идентификация работников.
+                    <strong style="color:var(--text)">Клиенты:</strong> нефтехимия, энергетика (объекты повышенной опасности).
+                    <strong style="color:var(--text)">Слабость:</strong> узкая специализация, нет СОУТ, нет аналитики, слабый маркетинг.
+                </p>
+            </div>
+
+            <!-- 10. ИС АйтиМед HSE -->
+            <div class="comp-card" style="border-left:3px solid var(--purple)">
+                <div class="name">ИС АйтиМед HSE <span class="badge b-purple">Медицина+ОТ</span></div>
+                <div class="meta">Cloud (SaaS) &middot; Медицина + ОТ &middot; Нишевой</div>
+                <div class="stats">
+                    <div class="stat"><div class="v val-purple">~1&ndash;2%</div><div class="l">Доля рынка</div></div>
+                    <div class="stat"><div class="v threat-low">НИЗКАЯ</div><div class="l">Угроза</div></div>
+                    <div class="stat"><div class="v val-blue">40+</div><div class="l">Клиентов</div></div>
+                </div>
+                <p style="color:var(--text2);font-size:0.88em;line-height:1.65">
+                    Уникальная связка медицины труда и охраны труда. Автоматизация предрейсовых/предсменных осмотров, медосмотров, профзаболеваний. Интеграция с МИС (медицинскими информационными системами).
+                    <strong style="color:var(--text)">Клиенты:</strong> транспортные компании, предприятия с медпунктами.
+                    <strong style="color:var(--text)">Слабость:</strong> нишевой продукт, ограниченный функционал ОТ за пределами медицины, малая команда разработки.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ─── 2.3 Радарная диаграмма ─── -->
+    <div class="section">
+        <div class="section-head">
+            <span class="section-num">2</span>
+            <h2>Сравнительный радар: ключевые параметры</h2>
+        </div>
+
+        <div class="info-tip" style="background:rgba(74,143,224,0.08);border-left:4px solid var(--blue);padding:14px 18px;border-radius:8px;margin-bottom:24px">
+            <span style="color:var(--blue);font-weight:700">&#9432; Радарная диаграмма</span>
+            <span style="color:var(--text2);font-size:0.95em"> сравнивает 4 платформы по 7 критериям (шкала 0&ndash;10). Каждая ось &mdash; экспертная оценка, базирующаяся на функциональности продукта, отзывах клиентов и рыночной позиции.</span>
+        </div>
+
+        <div class="chart-container">
+            <h3>КОТ vs. Ключевые конкуренты</h3>
+            <div class="subtitle">Экспертная оценка по 7 параметрам (0&ndash;10)</div>
+
+            <svg class="chart-svg" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+
+                <!-- Grid: 3 concentric heptagons -->
+                <!-- Outer ring (10) -->
+                <polygon points="300,80 441,148 475,300 378,422 222,422 125,300 159,148"
+                         fill="none" stroke="#2E2838" stroke-width="1"/>
+                <!-- Middle ring (6.67) -->
+                <polygon points="300,140 394,185 417,287 352,368 248,368 183,287 206,185"
+                         fill="none" stroke="#2E2838" stroke-width="0.7" stroke-dasharray="3"/>
+                <!-- Inner ring (3.33) -->
+                <polygon points="300,200 347,223 358,273 326,314 274,314 242,273 253,223"
+                         fill="none" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="2"/>
+
+                <!-- Axis lines from center to vertices -->
+                <line x1="300" y1="260" x2="300" y2="80" stroke="#2E2838" stroke-width="0.5"/>
+                <line x1="300" y1="260" x2="441" y2="148" stroke="#2E2838" stroke-width="0.5"/>
+                <line x1="300" y1="260" x2="475" y2="300" stroke="#2E2838" stroke-width="0.5"/>
+                <line x1="300" y1="260" x2="378" y2="422" stroke="#2E2838" stroke-width="0.5"/>
+                <line x1="300" y1="260" x2="222" y2="422" stroke="#2E2838" stroke-width="0.5"/>
+                <line x1="300" y1="260" x2="125" y2="300" stroke="#2E2838" stroke-width="0.5"/>
+                <line x1="300" y1="260" x2="159" y2="148" stroke="#2E2838" stroke-width="0.5"/>
+
+                <!-- Axis labels -->
+                <text x="300" y="55" fill="#A8A0B0" font-size="11" text-anchor="middle" font-weight="600">Функциональность</text>
+                <text x="460" y="136" fill="#A8A0B0" font-size="11" text-anchor="start">UX / мобильность</text>
+                <text x="492" y="308" fill="#A8A0B0" font-size="11" text-anchor="start">Интеграции</text>
+                <text x="389" y="445" fill="#A8A0B0" font-size="11" text-anchor="start">Цена / доступность</text>
+                <text x="211" y="445" fill="#A8A0B0" font-size="11" text-anchor="end">Поддержка</text>
+                <text x="100" y="308" fill="#A8A0B0" font-size="11" text-anchor="end">Масштабируемость</text>
+                <text x="140" y="136" fill="#A8A0B0" font-size="11" text-anchor="end">Комплаенс</text>
+
+                <!-- Data areas -->
+
+                <!-- SafetyCulture: [6, 9, 5, 7, 5, 7, 4] — teal -->
+                <polygon points="300,152 427,159 388,280 355,374 261,341 177,288 244,215"
+                         fill="rgba(64,176,160,0.15)" stroke="#40B0A0" stroke-width="1.5"
+                         class="radar-area" style="animation-delay:0.1s"/>
+
+                <!-- БРеалИТ: [7, 5, 6, 4, 7, 8, 8] — blue -->
+                <polygon points="300,134 370,204 405,284 331,325 245,374 160,292 187,170"
+                         fill="rgba(74,143,224,0.15)" stroke="#4A8FE0" stroke-width="1.5"
+                         class="radar-area" style="animation-delay:0.2s"/>
+
+                <!-- 1С:EHS: [9, 4, 9, 3, 6, 9, 8] — red -->
+                <polygon points="300,98 356,215 458,296 323,309 253,357 142,296 187,170"
+                         fill="rgba(212,64,64,0.15)" stroke="#D44040" stroke-width="1.5"
+                         class="radar-area" style="animation-delay:0.3s"/>
+
+                <!-- КОТ: [8, 6, 7, 5, 8, 7, 9] — gold (on top) -->
+                <polygon points="300,116 384,193 423,288 339,341 238,390 177,288 173,159"
+                         fill="rgba(201,164,76,0.25)" stroke="#C9A44C" stroke-width="2.5"
+                         class="radar-area" style="animation-delay:0.4s;filter:drop-shadow(0 0 6px rgba(201,164,76,0.3))"/>
+
+                <!-- Score dots for КОТ -->
+                <circle cx="300" cy="116" r="4" fill="#C9A44C" class="radar-dot" style="animation-delay:0.5s"/>
+                <circle cx="384" cy="193" r="4" fill="#C9A44C" class="radar-dot" style="animation-delay:0.55s"/>
+                <circle cx="423" cy="288" r="4" fill="#C9A44C" class="radar-dot" style="animation-delay:0.6s"/>
+                <circle cx="339" cy="341" r="4" fill="#C9A44C" class="radar-dot" style="animation-delay:0.65s"/>
+                <circle cx="238" cy="390" r="4" fill="#C9A44C" class="radar-dot" style="animation-delay:0.7s"/>
+                <circle cx="177" cy="288" r="4" fill="#C9A44C" class="radar-dot" style="animation-delay:0.75s"/>
+                <circle cx="173" cy="159" r="4" fill="#C9A44C" class="radar-dot" style="animation-delay:0.8s"/>
+
+                <!-- Scale labels on first axis -->
+                <text x="310" y="204" fill="#706880" font-size="9">3</text>
+                <text x="310" y="144" fill="#706880" font-size="9">7</text>
+                <text x="310" y="78" fill="#706880" font-size="9">10</text>
+
+            </svg>
+
+            <!-- Legend -->
+            <div class="chart-legend">
+                <div class="leg-item"><span class="leg-swatch" style="background:#C9A44C"></span> <span>KOT &mdash; [8, 6, 7, 5, 8, 7, 9]</span></div>
+                <div class="leg-item"><span class="leg-swatch" style="background:#D44040"></span> <span>1C:EHS KOPP &mdash; [9, 4, 9, 3, 6, 9, 8]</span></div>
+                <div class="leg-item"><span class="leg-swatch" style="background:#4A8FE0"></span> <span>БPeaлИT &mdash; [7, 5, 6, 4, 7, 8, 8]</span></div>
+                <div class="leg-item"><span class="leg-swatch" style="background:#40B0A0"></span> <span>SafetyCulture &mdash; [6, 9, 5, 7, 5, 7, 4]</span></div>
+            </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:20px">
+            <div class="card" style="border-left:4px solid var(--gold)">
+                <h3 style="font-size:1em">Сильные стороны КОТ</h3>
+                <p style="color:var(--text2);font-size:0.88em;line-height:1.65">
+                    <strong style="color:var(--green)">Комплаенс (9/10)</strong> &mdash; максимальное соответствие российской нормативке (ТК РФ, приказы Минтруда). <strong style="color:var(--green)">Функциональность (8/10)</strong> и <strong style="color:var(--green)">Поддержка (8/10)</strong> &mdash; широкий модульный охват с качественным сопровождением.
+                </p>
+            </div>
+            <div class="card" style="border-left:4px solid var(--red)">
+                <h3 style="font-size:1em">Зоны развития КОТ</h3>
+                <p style="color:var(--text2);font-size:0.88em;line-height:1.65">
+                    <strong style="color:var(--red)">Цена/доступность (5/10)</strong> &mdash; не самый доступный вариант для SMB. <strong style="color:var(--orange)">UX/мобильность (6/10)</strong> &mdash; мобильное приложение уступает SafetyCulture и MD Audit. Критично для полевых работников.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ─── 2.4 Тепловая карта модулей ─── -->
+    <div class="section">
+        <div class="section-head">
+            <span class="section-num">2</span>
+            <h2>Тепловая карта: покрытие модулей</h2>
+        </div>
+
+        <div class="info-tip" style="background:rgba(74,143,224,0.08);border-left:4px solid var(--blue);padding:14px 18px;border-radius:8px;margin-bottom:24px">
+            <span style="color:var(--blue);font-weight:700">&#9432; Как читать</span>
+            <span style="color:var(--text2);font-size:0.95em"> &mdash; <span style="color:var(--green);font-weight:600">&#9679;</span> полная реализация модуля, <span style="color:var(--orange);font-weight:600">&#9684;</span> частичная реализация, <span style="color:var(--text3)">&#9675;</span> отсутствует. Данные на основе документации продуктов и экспертных оценок.</span>
+        </div>
+
+        <div class="card" style="overflow-x:auto;padding:16px">
+            <table class="hm">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;min-width:180px">Модуль</th>
+                        <th style="min-width:70px;border-left:2px solid var(--gold-border)">КОТ</th>
+                        <th style="min-width:70px">1С:EHS</th>
+                        <th style="min-width:70px">БРеалИТ</th>
+                        <th style="min-width:70px">MD Audit</th>
+                        <th style="min-width:80px">EcoStandard</th>
+                        <th style="min-width:90px">SafetyCulture</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- СОУТ -->
+                    <tr>
+                        <td>СОУТ</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                    </tr>
+                    <!-- Оценка рисков -->
+                    <tr>
+                        <td>Оценка рисков</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                    </tr>
+                    <!-- Обучение ОТ -->
+                    <tr>
+                        <td>Обучение ОТ</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                    </tr>
+                    <!-- Медосмотры -->
+                    <tr>
+                        <td>Медосмотры</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                    </tr>
+                    <!-- Расследование инцидентов -->
+                    <tr>
+                        <td>Расследование инцидентов</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                    </tr>
+                    <!-- СИЗ -->
+                    <tr>
+                        <td>СИЗ</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                    </tr>
+                    <!-- Наряд-допуск -->
+                    <tr>
+                        <td>Наряд-допуск</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                    </tr>
+                    <!-- Аудиты/проверки -->
+                    <tr>
+                        <td>Аудиты / проверки</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                    </tr>
+                    <!-- Документооборот -->
+                    <tr>
+                        <td>Документооборот</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                    </tr>
+                    <!-- Аналитика/дашборды -->
+                    <tr>
+                        <td>Аналитика / дашборды</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                    </tr>
+                    <!-- Мобильное приложение -->
+                    <tr>
+                        <td>Мобильное приложение</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center;border-left:2px solid var(--gold-border)">&#9684;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                    </tr>
+                    <!-- Интеграция с ERP -->
+                    <tr>
+                        <td>Интеграция с ERP</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                    </tr>
+                    <!-- Электронная подпись -->
+                    <tr>
+                        <td>Электронная подпись</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                    </tr>
+                    <!-- AI-модули -->
+                    <tr>
+                        <td>AI-модули</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center;border-left:2px solid var(--gold-border)">&#9684;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:700;text-align:center">&#9679;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Summary row -->
+        <div class="grid-3" style="margin-top:16px">
+            <div class="card" style="text-align:center;border-top:3px solid var(--gold)">
+                <div style="font-size:2.2em;font-weight:700;color:var(--gold)">12 / 14</div>
+                <div style="font-size:0.82em;color:var(--text3);margin-top:4px">КОТ &mdash; полных модулей</div>
+            </div>
+            <div class="card" style="text-align:center;border-top:3px solid var(--red)">
+                <div style="font-size:2.2em;font-weight:700;color:var(--red)">11 / 14</div>
+                <div style="font-size:0.82em;color:var(--text3);margin-top:4px">1С:EHS &mdash; полных модулей</div>
+            </div>
+            <div class="card" style="text-align:center;border-top:3px solid var(--green)">
+                <div style="font-size:2.2em;font-weight:700;color:var(--green)">6 / 14</div>
+                <div style="font-size:0.82em;color:var(--text3);margin-top:4px">SafetyCulture &mdash; полных модулей</div>
+            </div>
+        </div>
+
+        <div class="card" style="border-left:4px solid var(--gold);padding:16px 20px;margin-top:16px">
+            <p style="color:var(--text2);font-size:0.92em;line-height:1.7;margin:0">
+                <strong style="color:var(--gold)">Ключевой вывод:</strong> КОТ лидирует по широте покрытия модулей (12 из 14 полностью реализованы), опережая даже 1С:EHS КОРП (11/14). Основные зоны роста &mdash; <strong style="color:var(--orange)">мобильное приложение</strong> (пока частично) и <strong style="color:var(--orange)">AI-модули</strong> (в разработке). SafetyCulture лидирует именно в этих двух направлениях, что делает их потенциальным эталоном для roadmap КОТ.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- ─── 2.5 Тепловая карта отраслей ─── -->
+    <div class="section">
+        <div class="section-head">
+            <span class="section-num">2</span>
+            <h2>Тепловая карта: присутствие по отраслям</h2>
+        </div>
+
+        <div class="info-tip" style="background:rgba(74,143,224,0.08);border-left:4px solid var(--blue);padding:14px 18px;border-radius:8px;margin-bottom:24px">
+            <span style="color:var(--blue);font-weight:700">&#9432; Как читать</span>
+            <span style="color:var(--text2);font-size:0.95em"> &mdash; <span style="color:var(--green);font-weight:700">&#9679;&#9679;</span> сильное присутствие (якорные клиенты), <span style="color:var(--green)">&#9679;</span> присутствует, <span style="color:var(--orange)">&#9684;</span> слабое присутствие, <span style="color:var(--text3)">&#9675;</span> отсутствует. Оценка по данным клиентских списков, кейсов и тендерной активности.</span>
+        </div>
+
+        <div class="card" style="overflow-x:auto;padding:16px">
+            <table class="hm">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;min-width:160px">Отрасль</th>
+                        <th style="min-width:70px;border-left:2px solid var(--gold-border)">КОТ</th>
+                        <th style="min-width:70px">1С:EHS</th>
+                        <th style="min-width:70px">БРеалИТ</th>
+                        <th style="min-width:70px">MD Audit</th>
+                        <th style="min-width:80px">EcoStandard</th>
+                        <th style="min-width:90px">SafetyCulture</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Металлургия -->
+                    <tr>
+                        <td>Металлургия</td>
+                        <td style="background:rgba(61,184,106,0.35);color:#3DB86A;font-weight:700;text-align:center;border-left:2px solid var(--gold-border)">&#9679;&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                    </tr>
+                    <!-- Нефтегаз -->
+                    <tr>
+                        <td>Нефтегаз</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.35);color:#3DB86A;font-weight:700;text-align:center">&#9679;&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.35);color:#3DB86A;font-weight:700;text-align:center">&#9679;&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                    </tr>
+                    <!-- Энергетика -->
+                    <tr>
+                        <td>Энергетика</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.35);color:#3DB86A;font-weight:700;text-align:center">&#9679;&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.35);color:#3DB86A;font-weight:700;text-align:center">&#9679;&#9679;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                    </tr>
+                    <!-- Ритейл -->
+                    <tr>
+                        <td>Ритейл</td>
+                        <td style="background:rgba(61,184,106,0.35);color:#3DB86A;font-weight:700;text-align:center;border-left:2px solid var(--gold-border)">&#9679;&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                    </tr>
+                    <!-- Химия/фарма -->
+                    <tr>
+                        <td>Химия / фарма</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                    </tr>
+                    <!-- Машиностроение -->
+                    <tr>
+                        <td>Машиностроение</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                    </tr>
+                    <!-- Строительство -->
+                    <tr>
+                        <td>Строительство</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center;border-left:2px solid var(--gold-border)">&#9684;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                    </tr>
+                    <!-- Транспорт -->
+                    <tr>
+                        <td>Транспорт</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                    </tr>
+                    <!-- Пищевая промышленность -->
+                    <tr>
+                        <td>Пищевая пром.</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center;border-left:2px solid var(--gold-border)">&#9679;</td>
+                        <td style="background:rgba(224,128,64,0.20);color:#E08040;text-align:center">&#9684;</td>
+                        <td style="background:rgba(212,64,64,0.10);color:#706880;text-align:center">&#9675;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                        <td style="background:rgba(61,184,106,0.25);color:#3DB86A;font-weight:600;text-align:center">&#9679;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="grid-2" style="margin-top:16px">
+            <div class="card" style="border-left:4px solid var(--green)">
+                <h3 style="font-size:1em;color:var(--green)">Сильные позиции КОТ</h3>
+                <p style="color:var(--text2);font-size:0.88em;line-height:1.65">
+                    <strong style="color:var(--text)">Металлургия</strong> и <strong style="color:var(--text)">Ритейл</strong> &mdash; отрасли, где КОТ имеет якорных клиентов и наиболее глубокую экспертизу. Это территории, где конкуренты (1С, БРеалИТ) слабее или не присутствуют.
+                </p>
+            </div>
+            <div class="card" style="border-left:4px solid var(--orange)">
+                <h3 style="font-size:1em;color:var(--orange)">Зоны экспансии</h3>
+                <p style="color:var(--text2);font-size:0.88em;line-height:1.65">
+                    <strong style="color:var(--text)">Строительство</strong> (пока &#9684;) &mdash; крупный растущий рынок, где КОТ может усилить позиции. <strong style="color:var(--text)">Нефтегаз</strong> и <strong style="color:var(--text)">Энергетика</strong> &mdash; стратегические отрасли, где доминируют 1С и БРеалИТ, но входной барьер преодолим.
+                </p>
+            </div>
+        </div>
+
+        <div class="card" style="border-left:4px solid var(--gold);padding:16px 20px;margin-top:16px;margin-bottom:32px">
+            <p style="color:var(--text2);font-size:0.92em;line-height:1.7;margin:0">
+                <strong style="color:var(--gold)">Стратегический вывод:</strong> КОТ имеет самое широкое отраслевое покрытие среди &laquo;новых&raquo; SaaS-решений (присутствие в 8 из 9 отраслей). Уникальная позиция &mdash; сильное присутствие одновременно в металлургии (тяжёлая промышленность) и ритейле (лёгкая промышленность), чего нет ни у одного конкурента. Приоритет &mdash; укрепление позиций в строительстве и расширение в нефтегаз через отраслевые кейсы.
+            </p>
+        </div>
+    </div>
+
+</section>
+<!-- ============================================================
+     ЧАСТЬ III — МИКРО: СМС-ИТ / КОТ
+     ============================================================ -->
+
+<!-- ============ 3.1 Профиль компании ============ -->
+<div class="section" id="sec-3-1">
+    <div class="section-head">
+        <span class="section-num">3</span>
+        <h2>СМС-ИТ / КОТ: Профиль компании</h2>
+    </div>
+
+    <div class="card">
+        <table>
+            <thead>
+                <tr><th style="width:35%">Параметр</th><th>Значение</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Полное наименование</td><td><strong>ООО &laquo;СМС-Информационные Технологии&raquo;</strong></td></tr>
+                <tr><td>ИНН / ОГРН</td><td>6312052132 / 1036300125531</td></tr>
+                <tr><td>Дата регистрации</td><td>2003 год</td></tr>
+                <tr><td>Юридический адрес</td><td>Самара, IT-парк &laquo;Монте Роза&raquo;</td></tr>
+                <tr><td>Директор</td><td>Шопин А.Г.</td></tr>
+                <tr><td>Основной ОКВЭД</td><td>62.01.1 &mdash; Разработка компьютерного программного обеспечения</td></tr>
+                <tr><td>Головная компания</td><td>АО &laquo;СМС-Автоматизация&raquo; (70&nbsp;% уставного капитала)</td></tr>
+                <tr><td>Статус</td><td><span class="badge" style="background:var(--green);color:#000">Аккредитованная IT-компания</span></td></tr>
+                <tr><td>Продукт в реестре ПО</td><td><span class="badge" style="background:var(--green);color:#000">Да</span> (реестр отечественного ПО)</td></tr>
+                <tr><td>Сотрудники</td><td><strong>250+</strong> (рост с 92 в 2019&nbsp;г.)</td></tr>
+                <tr><td>Клиенты</td><td><strong>500+</strong> организаций</td></tr>
+                <tr><td>Пользователи</td><td><strong>100&nbsp;000+</strong></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="info-tip">
+        СМС-ИТ входит в группу компаний СМС-Автоматизация &mdash; одного из крупнейших системных интеграторов Поволжья. 70&nbsp;% уставного капитала принадлежит головной компании.
+    </div>
+
+    <!-- Структура собственности -->
+    <div class="card" style="margin-top:24px">
+        <h3 style="margin-bottom:16px">Структура собственности</h3>
+        <div class="grid-3">
+            <div class="metric">
+                <div class="val-gold" style="font-size:2em">70%</div>
+                <div style="color:var(--text2);margin-top:6px">АО &laquo;СМС-Автоматизация&raquo;</div>
+                <div style="color:var(--text3);font-size:0.82em;margin-top:2px">Головная компания</div>
+            </div>
+            <div class="metric">
+                <div class="val-blue" style="font-size:2em">10%</div>
+                <div style="color:var(--text2);margin-top:6px">Шопин А.Г.</div>
+                <div style="color:var(--text3);font-size:0.82em;margin-top:2px">Генеральный директор</div>
+            </div>
+            <div class="metric">
+                <div class="val-purple" style="font-size:2em">20%</div>
+                <div style="color:var(--text2);margin-top:6px">Прочие учредители</div>
+                <div style="color:var(--text3);font-size:0.82em;margin-top:2px">Миноритарные доли</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ 3.2 Финансовый анализ ============ -->
+<div class="section" id="sec-3-2">
+    <div class="section-head">
+        <span class="section-num">3.2</span>
+        <h2>Финансовый анализ</h2>
+    </div>
+
+    <div class="chart-container">
+        <h3>Финансовые показатели СМС-ИТ</h3>
+        <div class="subtitle">Выручка и чистая прибыль, млн &#8381; (данные ФНС)</div>
+        <svg class="chart-svg" viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg">
+            <!-- Оси -->
+            <line x1="90" y1="50" x2="90" y2="360" stroke="#2E2838" stroke-width="1"/>
+            <line x1="90" y1="360" x2="750" y2="360" stroke="#2E2838" stroke-width="1"/>
+
+            <!-- Шкала Y: 0, 200, 400, 600, 800 -->
+            <text x="80" y="363" fill="#706880" font-size="11" text-anchor="end">0</text>
+            <text x="80" y="285" fill="#706880" font-size="11" text-anchor="end">200</text>
+            <text x="80" y="208" fill="#706880" font-size="11" text-anchor="end">400</text>
+            <text x="80" y="131" fill="#706880" font-size="11" text-anchor="end">600</text>
+            <text x="80" y="54" fill="#706880" font-size="11" text-anchor="end">800</text>
+
+            <!-- Горизонтальные направляющие -->
+            <line x1="90" y1="285" x2="750" y2="285" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+            <line x1="90" y1="208" x2="750" y2="208" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+            <line x1="90" y1="131" x2="750" y2="131" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+            <line x1="90" y1="54" x2="750" y2="54" stroke="#2E2838" stroke-width="0.5" stroke-dasharray="4"/>
+
+            <!-- Масштаб: 800 => y=54, 0 => y=360. 1 единица = (360-54)/800 = 0.3825 px -->
+
+            <!-- 2022: Выручка 442 => h=169, y=191; Прибыль 27.5 => h=10.5, y=349.5 -->
+            <rect x="150" y="191" width="60" height="169" rx="4" fill="#C9A44C" class="vbar-animated" style="animation-delay:0.1s"/>
+            <rect x="220" y="349" width="60" height="11" rx="4" fill="#3DB86A" class="vbar-animated" style="animation-delay:0.15s"/>
+            <text x="180" y="185" fill="#E8C46A" font-size="12" text-anchor="middle" font-weight="600">442</text>
+            <text x="250" y="343" fill="#3DB86A" font-size="11" text-anchor="middle" font-weight="600">27.5</text>
+            <text x="210" y="385" fill="#A8A0B0" font-size="13" text-anchor="middle">2022</text>
+
+            <!-- 2023: Выручка 561.4 => h=214.7, y=145.3; Прибыль 33.9 => h=13, y=347 -->
+            <rect x="350" y="145" width="60" height="215" rx="4" fill="#C9A44C" class="vbar-animated" style="animation-delay:0.25s"/>
+            <rect x="420" y="347" width="60" height="13" rx="4" fill="#3DB86A" class="vbar-animated" style="animation-delay:0.3s"/>
+            <text x="380" y="139" fill="#E8C46A" font-size="12" text-anchor="middle" font-weight="600">561</text>
+            <text x="450" y="341" fill="#3DB86A" font-size="11" text-anchor="middle" font-weight="600">33.9</text>
+            <text x="410" y="385" fill="#A8A0B0" font-size="13" text-anchor="middle">2023</text>
+
+            <!-- 2024: Выручка 718.5 => h=274.8, y=85.2; Прибыль 52.4 => h=20, y=340 -->
+            <rect x="550" y="85" width="60" height="275" rx="4" fill="#C9A44C" class="vbar-animated" style="animation-delay:0.4s"/>
+            <rect x="620" y="340" width="60" height="20" rx="4" fill="#3DB86A" class="vbar-animated" style="animation-delay:0.45s"/>
+            <text x="580" y="79" fill="#E8C46A" font-size="12" text-anchor="middle" font-weight="600">718.5</text>
+            <text x="650" y="334" fill="#3DB86A" font-size="11" text-anchor="middle" font-weight="600">52.4</text>
+            <text x="610" y="385" fill="#A8A0B0" font-size="13" text-anchor="middle">2024</text>
+        </svg>
+        <div class="chart-legend">
+            <div class="leg-item"><div class="leg-swatch" style="background:#C9A44C"></div>Выручка, млн &#8381;</div>
+            <div class="leg-item"><div class="leg-swatch" style="background:#3DB86A"></div>Чистая прибыль, млн &#8381;</div>
+        </div>
+    </div>
+
+    <!-- Финансовая таблица -->
+    <div class="card" style="margin-top:24px">
+        <h3 style="margin-bottom:12px">Ключевые финансовые метрики</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Показатель</th>
+                    <th style="text-align:right">2022</th>
+                    <th style="text-align:right">2023</th>
+                    <th style="text-align:right">2024</th>
+                    <th style="text-align:center">Тренд</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Выручка, млн &#8381;</td>
+                    <td style="text-align:right">442</td>
+                    <td style="text-align:right">561,4</td>
+                    <td style="text-align:right"><strong>718,5</strong></td>
+                    <td style="text-align:center"><span class="pos">+28%</span></td>
+                </tr>
+                <tr>
+                    <td>Чистая прибыль, млн &#8381;</td>
+                    <td style="text-align:right">27,5</td>
+                    <td style="text-align:right">33,9</td>
+                    <td style="text-align:right"><strong>52,4</strong></td>
+                    <td style="text-align:center"><span class="pos">+54,6%</span></td>
+                </tr>
+                <tr>
+                    <td>Маржа чистой прибыли</td>
+                    <td style="text-align:right">6,2%</td>
+                    <td style="text-align:right">6,0%</td>
+                    <td style="text-align:right"><strong>7,3%</strong></td>
+                    <td style="text-align:center"><span class="pos">&uarr;</span></td>
+                </tr>
+                <tr>
+                    <td>Активы, млн &#8381;</td>
+                    <td style="text-align:right;color:var(--text3)">&mdash;</td>
+                    <td style="text-align:right">121</td>
+                    <td style="text-align:right;color:var(--text3)">&mdash;</td>
+                    <td style="text-align:center;color:var(--text3)">&mdash;</td>
+                </tr>
+                <tr>
+                    <td>Чистые активы, млн &#8381;</td>
+                    <td style="text-align:right;color:var(--text3)">&mdash;</td>
+                    <td style="text-align:right">51,2</td>
+                    <td style="text-align:right;color:var(--text3)">&mdash;</td>
+                    <td style="text-align:center;color:var(--text3)">&mdash;</td>
+                </tr>
+                <tr>
+                    <td>ROA</td>
+                    <td style="text-align:right;color:var(--text3)">&mdash;</td>
+                    <td style="text-align:right">~28%</td>
+                    <td style="text-align:right;color:var(--text3)">&mdash;</td>
+                    <td style="text-align:center;color:var(--text3)">&mdash;</td>
+                </tr>
+                <tr>
+                    <td>Выручка / сотрудник, млн &#8381;</td>
+                    <td style="text-align:right">~4,8</td>
+                    <td style="text-align:right">~2,2</td>
+                    <td style="text-align:right">~2,9</td>
+                    <td style="text-align:center"><span class="neg">&darr; (рост штата)</span></td>
+                </tr>
+                <tr>
+                    <td>Сотрудники</td>
+                    <td style="text-align:right">~92</td>
+                    <td style="text-align:right">~250</td>
+                    <td style="text-align:right"><strong>250+</strong></td>
+                    <td style="text-align:center"><span class="pos">рост</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="callout pos" style="margin-top:20px">
+        <strong>Рост штата с 92 (2019) до 250+ (2024) &mdash; увеличение на 170%.</strong> Это свидетельствует об активной фазе роста и инвестициях в разработку продукта. Выручка на сотрудника снизилась в 2023 из-за опережающего найма, но уже восстанавливается &mdash; типичная динамика для масштабирующейся SaaS-компании.
+    </div>
+</div>
+
+<!-- ============ 3.3 Продуктовый анализ КОТ ============ -->
+<div class="section" id="sec-3-3">
+    <div class="section-head">
+        <span class="section-num">3.3</span>
+        <h2>Продуктовый анализ: платформа КОТ</h2>
+    </div>
+
+    <p style="color:var(--text2);margin-bottom:20px">
+        КОТ (Комплексная система Охраны Труда) &mdash; модульная платформа для автоматизации процессов промышленной безопасности и охраны труда. Включает <strong>14+ функциональных модулей</strong>, покрывающих полный цикл управления ОТ и ПБ.
+    </p>
+
+    <div class="grid-3">
+        <div class="card" style="padding:16px">
+            <h3 style="font-size:0.95em;margin-bottom:6px">&#128203; СОУТ</h3>
+            <p style="color:var(--text2);font-size:0.82em">Специальная оценка условий труда &mdash; электронные карты, автоматическое формирование деклараций, мониторинг сроков</p>
+        </div>
+        <div class="card" style="padding:16px">
+            <h3 style="font-size:0.95em;margin-bottom:6px">&#9888;&#65039; Оценка рисков</h3>
+            <p style="color:var(--text2);font-size:0.82em">Профессиональные риски по ISO 45001 &mdash; матрицы рисков, карты опасностей, планы мероприятий по снижению</p>
+        </div>
+        <div class="card" style="padding:16px">
+            <h3 style="font-size:0.95em;margin-bottom:6px">&#127891; Обучение ОТ</h3>
+            <p style="color:var(--text2);font-size:0.82em">Планирование и учёт обучения &mdash; графики, протоколы проверки знаний, контроль допусков к работам</p>
+        </div>
+        <div class="card" style="padding:16px">
+            <h3 style="font-size:0.95em;margin-bottom:6px">&#129657; Медосмотры</h3>
+            <p style="color:var(--text2);font-size:0.82em">Управление медицинскими осмотрами &mdash; предварительные, периодические, формирование контингентов</p>
+        </div>
+        <div class="card" style="padding:16px">
+            <h3 style="font-size:0.95em;margin-bottom:6px">&#128269; Расследование инцидентов</h3>
+            <p style="color:var(--text2);font-size:0.82em">Учёт несчастных случаев и профзаболеваний &mdash; материалы расследования, формы Н-1, корректирующие действия</p>
+        </div>
+        <div class="card" style="padding:16px">
+            <h3 style="font-size:0.95em;margin-bottom:6px">&#129509; Учёт СИЗ</h3>
+            <p style="color:var(--text2);font-size:0.82em">Средства индивидуальной защиты &mdash; карточки выдачи, нормы, контроль сроков носки и замены</p>
+        </div>
+        <div class="card" style="padding:16px">
+            <h3 style="font-size:0.95em;margin-bottom:6px">&#128221; Наряд-допуск</h3>
+            <p style="color:var(--text2);font-size:0.82em">Электронный наряд-допуск &mdash; оформление, согласование, контроль выполнения работ повышенной опасности</p>
+        </div>
+        <div class="card" style="padding:16px">
+            <h3 style="font-size:0.95em;margin-bottom:6px">&#128270; Аудиты и проверки</h3>
+            <p style="color:var(--text2);font-size:0.82em">Внутренние аудиты безопасности &mdash; чек-листы, графики проверок, мониторинг устранения замечаний</p>
+        </div>
+        <div class="card" style="padding:16px">
+            <h3 style="font-size:0.95em;margin-bottom:6px">&#128196; Документооборот</h3>
+            <p style="color:var(--text2);font-size:0.82em">Управление нормативными документами &mdash; актуализация, рассылка, контроль ознакомления сотрудников</p>
+        </div>
+        <div class="card" style="padding:16px">
+            <h3 style="font-size:0.95em;margin-bottom:6px">&#128202; Аналитика</h3>
+            <p style="color:var(--text2);font-size:0.82em">Дашборды и отчётность &mdash; KPI по безопасности, LTIFR, визуализация трендов, автоматические отчёты</p>
+        </div>
+        <div class="card" style="padding:16px">
+            <h3 style="font-size:0.95em;margin-bottom:6px">&#128101; Управление подрядчиками</h3>
+            <p style="color:var(--text2);font-size:0.82em">Допуск подрядных организаций &mdash; проверка документов, квалификации, контроль соблюдения требований</p>
+        </div>
+        <div class="card" style="padding:16px">
+            <h3 style="font-size:0.95em;margin-bottom:6px">&#127793; Экологический мониторинг</h3>
+            <p style="color:var(--text2);font-size:0.82em">Экологическая отчётность &mdash; мониторинг выбросов, отходов, формирование экологических отчётов</p>
+        </div>
+        <div class="card" style="padding:16px">
+            <h3 style="font-size:0.95em;margin-bottom:6px">&#128272; Электронная подпись</h3>
+            <p style="color:var(--text2);font-size:0.82em">ЭЦП для документов ОТ &mdash; юридически значимый электронный документооборот, интеграция с УКЭП</p>
+        </div>
+        <div class="card" style="padding:16px">
+            <h3 style="font-size:0.95em;margin-bottom:6px">&#128279; Интеграция с ERP</h3>
+            <p style="color:var(--text2);font-size:0.82em">SAP, 1С, Oracle &mdash; двусторонний обмен данными, синхронизация справочников, единое информационное пространство</p>
+        </div>
+    </div>
+
+    <div class="callout pos" style="margin-top:24px">
+        <strong>Клиенты:</strong> Северсталь, Магнит, Нордголд, Ново Нордиск, и 500+ других организаций в металлургии, ритейле, фармацевтике и промышленности.
+    </div>
+</div>
+
+<!-- ============ 3.4 SWOT-матрица ============ -->
+<div class="section" id="sec-3-4">
+    <div class="section-head">
+        <span class="section-num">3.4</span>
+        <h2>SWOT-анализ</h2>
+    </div>
+
+    <div class="swot-grid">
+        <!-- Strengths -->
+        <div class="swot-box swot-s">
+            <h3>Сильные стороны (S)</h3>
+            <ul>
+                <li><strong>100&nbsp;000+ активных пользователей</strong> &mdash; подтверждённый product-market fit</li>
+                <li><strong>20+ лет на рынке</strong> &mdash; глубокая экспертиза и зрелость продукта</li>
+                <li><strong>В реестре отечественного ПО</strong> &mdash; конкурентное преимущество при госзакупках</li>
+                <li><strong>Рост выручки +28% YoY</strong> &mdash; устойчивый органический рост</li>
+                <li><strong>Якорные enterprise-клиенты</strong> &mdash; Северсталь, Магнит, Нордголд</li>
+                <li><strong>14+ модулей</strong> &mdash; одна из самых полных платформ на рынке</li>
+                <li><strong>Сильная интеграция с ERP</strong> &mdash; SAP, 1С, Oracle</li>
+                <li><strong>Часть группы СМС-Автоматизация</strong> &mdash; финансовая устойчивость</li>
+            </ul>
+        </div>
+
+        <!-- Weaknesses -->
+        <div class="swot-box swot-w">
+            <h3>Слабые стороны (W)</h3>
+            <ul>
+                <li><strong>Маржа ~7%</strong> &mdash; критически низкая для SaaS (норма 15&ndash;25%)</li>
+                <li><strong>Нет публичного прайсинга</strong> &mdash; барьер для новых клиентов</li>
+                <li><strong>Слабый digital-маркетинг</strong> &mdash; минимальное SEO/контент-присутствие</li>
+                <li><strong>Зависимость от головной компании (70%)</strong> &mdash; ограниченная автономия</li>
+                <li><strong>Отставание в mobile/UX</strong> &mdash; SafetyCulture задаёт выше стандарт</li>
+                <li><strong>Концентрация на крупном бизнесе</strong> &mdash; упускает растущий SMB-сегмент</li>
+                <li><strong>Низкая узнаваемость бренда</strong> &mdash; уступает 1С и EcoStandard</li>
+            </ul>
+        </div>
+
+        <!-- Opportunities -->
+        <div class="swot-box swot-o">
+            <h3>Возможности (O)</h3>
+            <ul>
+                <li><strong>CAGR рынка 12&ndash;15%</strong> &mdash; растущий спрос на OHS-tech</li>
+                <li><strong>Регуляторные драйверы</strong> &mdash; ужесточение требований к ОТ</li>
+                <li><strong>Экспансия в СНГ</strong> &mdash; Казахстан, Беларусь, Узбекистан</li>
+                <li><strong>AI-модули</strong> &mdash; предиктивная аналитика, computer vision</li>
+                <li><strong>ESG-отчётность</strong> &mdash; новый обязательный модуль для публичных компаний</li>
+                <li><strong>Импортозамещение</strong> &mdash; уход западных вендоров (SAP EHS)</li>
+                <li><strong>Партнёрства с IoT-компаниями</strong> &mdash; wearables, датчики</li>
+            </ul>
+        </div>
+
+        <!-- Threats -->
+        <div class="swot-box swot-t">
+            <h3>Угрозы (T)</h3>
+            <ul>
+                <li><strong>Доминирование 1С (~35%)</strong> &mdash; мощная экосистема и дистрибуция</li>
+                <li><strong>SafetyCulture-экспансия</strong> &mdash; глобальный лидер с лучшим UX</li>
+                <li><strong>Ценовое давление</strong> &mdash; MD Audit и SUOT предлагают дешевле</li>
+                <li><strong>Кадровый дефицит</strong> &mdash; 500&ndash;700К вакансий в IT</li>
+                <li><strong>Регуляторные изменения</strong> &mdash; могут потребовать дорогую адаптацию</li>
+                <li><strong>Консолидация рынка</strong> &mdash; M&amp;A активность конкурентов</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============ 3.5 Доля рынка ============ -->
+<div class="section" id="sec-3-5">
+    <div class="section-head">
+        <span class="section-num">3.5</span>
+        <h2>Доля рынка</h2>
+    </div>
+
+    <div class="chart-container">
+        <h3>Оценка долей рынка OHS-tech в России</h3>
+        <div class="subtitle">По выручке от продуктов охраны труда, 2024 (экспертная оценка)</div>
+        <svg class="chart-svg" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="kot-glow">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+                    <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <!-- Donut Chart: cx=300 cy=195 r=125 stroke-width=70 -->
+            <!-- Circumference = 2 * PI * 125 = 785.398 -->
+
+            <!-- Прочие: 23% = 180.6, offset=0 -->
+            <circle cx="300" cy="195" r="125" fill="none"
+                    stroke="#3D3548" stroke-width="70"
+                    stroke-dasharray="180.6 785.4"
+                    stroke-dashoffset="0"
+                    class="donut-segment" transform="rotate(-90 300 195)"/>
+
+            <!-- 1С:EHS: 35% = 274.9, offset=-180.6 -->
+            <circle cx="300" cy="195" r="125" fill="none"
+                    stroke="#D44040" stroke-width="70"
+                    stroke-dasharray="274.9 785.4"
+                    stroke-dashoffset="-180.6"
+                    class="donut-segment" transform="rotate(-90 300 195)"/>
+
+            <!-- БРеалИТ: 17% = 133.5, offset=-455.5 -->
+            <circle cx="300" cy="195" r="125" fill="none"
+                    stroke="#4A8FE0" stroke-width="70"
+                    stroke-dasharray="133.5 785.4"
+                    stroke-dashoffset="-455.5"
+                    class="donut-segment" transform="rotate(-90 300 195)"/>
+
+            <!-- КОТ (СМС-ИТ): 13% = 102.1, offset=-589.0 -->
+            <circle cx="300" cy="195" r="125" fill="none"
+                    stroke="#C9A44C" stroke-width="70"
+                    stroke-dasharray="102.1 785.4"
+                    stroke-dashoffset="-589.0"
+                    class="donut-segment" filter="url(#kot-glow)" transform="rotate(-90 300 195)"/>
+
+            <!-- EcoStandard: 7% = 55.0, offset=-691.1 -->
+            <circle cx="300" cy="195" r="125" fill="none"
+                    stroke="#9060D0" stroke-width="70"
+                    stroke-dasharray="55.0 785.4"
+                    stroke-dashoffset="-691.1"
+                    class="donut-segment" transform="rotate(-90 300 195)"/>
+
+            <!-- MD Audit: 5% = 39.3, offset=-746.1 -->
+            <circle cx="300" cy="195" r="125" fill="none"
+                    stroke="#3DB86A" stroke-width="70"
+                    stroke-dasharray="39.3 785.4"
+                    stroke-dashoffset="-746.1"
+                    class="donut-segment" transform="rotate(-90 300 195)"/>
+
+            <!-- Центральный текст -->
+            <text x="300" y="188" fill="var(--text1)" font-size="14" text-anchor="middle" font-weight="600">Рынок OHS-tech</text>
+            <text x="300" y="210" fill="var(--gold)" font-size="18" text-anchor="middle" font-weight="700">~50 млрд &#8381;</text>
+
+            <!-- Подписи сегментов (вокруг донатса) -->
+            <!-- 1С:EHS — верхний правый сектор -->
+            <text x="490" y="105" fill="#D44040" font-size="12" font-weight="600">1С:EHS</text>
+            <text x="490" y="120" fill="#D44040" font-size="11">35%</text>
+
+            <!-- БРеалИТ — нижний правый сектор -->
+            <text x="480" y="285" fill="#4A8FE0" font-size="12" font-weight="600">БРеалИТ</text>
+            <text x="480" y="300" fill="#4A8FE0" font-size="11">17%</text>
+
+            <!-- КОТ — нижний левый сектор -->
+            <text x="80" y="310" fill="#C9A44C" font-size="12" font-weight="700">КОТ (СМС-ИТ)</text>
+            <text x="80" y="325" fill="#C9A44C" font-size="11">13%</text>
+
+            <!-- EcoStandard — левый сектор -->
+            <text x="80" y="170" fill="#9060D0" font-size="12" font-weight="600">EcoStandard</text>
+            <text x="80" y="185" fill="#9060D0" font-size="11">7%</text>
+
+            <!-- MD Audit — верхний левый -->
+            <text x="80" y="120" fill="#3DB86A" font-size="12" font-weight="600">MD Audit</text>
+            <text x="80" y="135" fill="#3DB86A" font-size="11">5%</text>
+
+            <!-- Прочие — верхний сектор -->
+            <text x="260" y="48" fill="#706880" font-size="12" font-weight="600">Прочие</text>
+            <text x="260" y="63" fill="#706880" font-size="11">23%</text>
+        </svg>
+
+        <div class="chart-legend">
+            <div class="leg-item"><div class="leg-swatch" style="background:#D44040"></div>1С:EHS &mdash; 35%</div>
+            <div class="leg-item"><div class="leg-swatch" style="background:#4A8FE0"></div>БРеалИТ &mdash; 17%</div>
+            <div class="leg-item"><div class="leg-swatch" style="background:#C9A44C"></div>КОТ (СМС-ИТ) &mdash; 13%</div>
+            <div class="leg-item"><div class="leg-swatch" style="background:#9060D0"></div>EcoStandard &mdash; 7%</div>
+            <div class="leg-item"><div class="leg-swatch" style="background:#3DB86A"></div>MD Audit &mdash; 5%</div>
+            <div class="leg-item"><div class="leg-swatch" style="background:#3D3548"></div>Прочие &mdash; 23%</div>
+        </div>
+    </div>
+
+    <div class="info-tip" style="margin-top:20px">
+        <strong>Методология:</strong> Оценка долей рынка основана на анализе выручки компаний по данным ФНС, публичных кейсов, количества клиентов и экспертных оценок отраслевых аналитиков. Рынок OHS-tech в России оценивается в ~50 млрд &#8381; с CAGR 12&ndash;15%.
+        КОТ занимает <strong>3-е место</strong> по доле рынка, уступая 1С:EHS и БРеалИТ, но опережая EcoStandard Group и MD Audit.
+    </div>
+
+    <!-- Позиционирование в карте -->
+    <div class="card" style="margin-top:24px">
+        <h3 style="margin-bottom:12px">Позиционирование КОТ на рынке</h3>
+        <div class="grid-3">
+            <div class="metric">
+                <div class="val-gold" style="font-size:1.6em">#3</div>
+                <div style="color:var(--text2);margin-top:4px">Место на рынке</div>
+                <div style="color:var(--text3);font-size:0.82em">По доле выручки OHS-tech</div>
+            </div>
+            <div class="metric">
+                <div class="val-green" style="font-size:1.6em">~6,5 млрд &#8381;</div>
+                <div style="color:var(--text2);margin-top:4px">Объём рыночной ниши</div>
+                <div style="color:var(--text3);font-size:0.82em">13% от ~50 млрд &#8381;</div>
+            </div>
+            <div class="metric">
+                <div class="val-blue" style="font-size:1.6em">+28%</div>
+                <div style="color:var(--text2);margin-top:4px">Темп роста выручки</div>
+                <div style="color:var(--text3);font-size:0.82em">Выше рынка (CAGR 12&ndash;15%)</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================ -->
+<!-- PART IV — СТРАТЕГИЯ: Путь к росту                           -->
+<!-- ============================================================ -->
+
+<div class="section" id="strategy">
+    <div class="section-head">
+        <span class="section-num">4</span>
+        <h2>Стратегия: Путь к росту</h2>
+    </div>
+
+    <!-- 4.1 Стратегические рекомендации -->
+    <h3 style="color:var(--gold);margin:28px 0 18px;font-size:1.15em">4.1&nbsp; Стратегические рекомендации</h3>
+
+    <!-- Card 1 — Прозрачный прайсинг -->
+    <div class="card" style="border-left:4px solid var(--gold);margin:16px 0">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:10px">
+            <span style="background:var(--gold);color:var(--bg);width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:1em;flex-shrink:0">1</span>
+            <h3 style="color:var(--gold);font-size:1.1em">Прозрачный прайсинг + digital-маркетинг</h3>
+        </div>
+        <p style="color:var(--text2);font-size:0.9em;margin-bottom:10px">Опубликовать тарифные планы на сайте (как MD Audit — от 500₽/пользователь/мес), запустить SEO-оптимизацию, контент-маркетинг (кейс-стади клиентов), и вебинары по цифровизации ОТ.</p>
+        <span class="badge b-green">Ожидаемый эффект: +20-30% входящих лидов</span>
+    </div>
+
+    <!-- Card 2 — AI-модули -->
+    <div class="card" style="border-left:4px solid var(--blue);margin:16px 0">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:10px">
+            <span style="background:var(--blue);color:var(--bg);width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:1em;flex-shrink:0">2</span>
+            <h3 style="color:var(--blue);font-size:1.1em">AI-модули предиктивной аналитики</h3>
+        </div>
+        <p style="color:var(--text2);font-size:0.9em;margin-bottom:10px">Разработать модуль предсказания инцидентов на основе исторических данных (ML), computer vision для фотофиксации нарушений, NLP для автоматического анализа нормативных документов. Ключевая дифференциация от 1С.</p>
+        <span class="badge b-green">Ожидаемый эффект: premium-позиционирование, +15-20% к ARPU</span>
+    </div>
+
+    <!-- Card 3 — Экспансия в СНГ -->
+    <div class="card" style="border-left:4px solid var(--green);margin:16px 0">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:10px">
+            <span style="background:var(--green);color:var(--bg);width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:1em;flex-shrink:0">3</span>
+            <h3 style="color:var(--green);font-size:1.1em">Экспансия в СНГ</h3>
+        </div>
+        <p style="color:var(--text2);font-size:0.9em;margin-bottom:10px">Казахстан (схожий Трудовой кодекс), Беларусь (единое экономическое пространство), Узбекистан (быстрорастущий рынок). Русскоязычный интерфейс уже готов, нужна локализация нормативной базы.</p>
+        <span class="badge b-green">Ожидаемый эффект: +15-20% к ARR за 18 месяцев</span>
+    </div>
+
+    <!-- Card 4 — Мобильное приложение -->
+    <div class="card" style="border-left:4px solid #9B59B6;margin:16px 0">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:10px">
+            <span style="background:#9B59B6;color:var(--bg);width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:1em;flex-shrink:0">4</span>
+            <h3 style="color:#9B59B6;font-size:1.1em">Нативное мобильное приложение</h3>
+        </div>
+        <p style="color:var(--text2);font-size:0.9em;margin-bottom:10px">Разработать полнофункциональное мобильное приложение для полевых инспекций, фотофиксации, чек-листов и наряд-допусков. Offline-режим обязателен для промышленных объектов.</p>
+        <span class="badge b-green">Ожидаемый эффект: закрытие gap с SafetyCulture, +10-15% конверсия</span>
+    </div>
+
+    <!-- Card 5 — Оптимизация маржинальности -->
+    <div class="card" style="border-left:4px solid #E67E22;margin:16px 0">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:10px">
+            <span style="background:#E67E22;color:var(--bg);width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:1em;flex-shrink:0">5</span>
+            <h3 style="color:#E67E22;font-size:1.1em">Оптимизация маржинальности</h3>
+        </div>
+        <p style="color:var(--text2);font-size:0.9em;margin-bottom:10px">Переход к cloud-native архитектуре для снижения cost-to-serve, увеличение доли SaaS-подписок vs проектного внедрения, автоматизация onboarding клиентов. Целевая маржа: 15% к 2027.</p>
+        <span class="badge b-green">Ожидаемый эффект: маржа 7% &rarr; 15% за 24 месяца</span>
+    </div>
+
+    <!-- 4.2 Целевые KPI (B2B SaaS метрики) -->
+    <h3 style="color:var(--gold);margin:36px 0 18px;font-size:1.15em">4.2&nbsp; Целевые KPI (B2B SaaS метрики)</h3>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px">
+        <div class="metric">
+            <div style="font-size:.78em;color:var(--text3);margin-bottom:4px">ARR</div>
+            <div class="val-gold" style="font-size:1.4em;font-weight:800">718М &rarr; 1&nbsp;млрд&nbsp;₽</div>
+            <div style="font-size:.72em;color:var(--text3);margin-top:4px">К 2027 (CAGR 18%)</div>
+        </div>
+        <div class="metric">
+            <div style="font-size:.78em;color:var(--text3);margin-bottom:4px">NRR</div>
+            <div class="val-green" style="font-size:1.4em;font-weight:800">&gt;110%</div>
+            <div style="font-size:.72em;color:var(--text3);margin-top:4px">Net Revenue Retention</div>
+        </div>
+        <div class="metric">
+            <div style="font-size:.78em;color:var(--text3);margin-bottom:4px">Churn</div>
+            <div class="val-blue" style="font-size:1.4em;font-weight:800">&lt;5%</div>
+            <div style="font-size:.72em;color:var(--text3);margin-top:4px">Годовой отток</div>
+        </div>
+        <div class="metric">
+            <div style="font-size:.78em;color:var(--text3);margin-bottom:4px">Маржа</div>
+            <div style="font-size:1.4em;font-weight:800;color:#9B59B6">7% &rarr; 15%</div>
+            <div style="font-size:.72em;color:var(--text3);margin-top:4px">К 2027</div>
+        </div>
+    </div>
+
+    <div class="card" style="overflow-x:auto">
+        <table style="width:100%;min-width:700px">
+            <thead>
+                <tr>
+                    <th style="text-align:left">KPI</th>
+                    <th>Текущее (2024)</th>
+                    <th>Цель 2025</th>
+                    <th>Цель 2026</th>
+                    <th>Цель 2027</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="font-weight:600;color:var(--gold)">ARR, млн ₽</td>
+                    <td style="text-align:center">718.5</td>
+                    <td style="text-align:center">850</td>
+                    <td style="text-align:center">950</td>
+                    <td style="text-align:center;color:var(--gold);font-weight:700">1 000+</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600;color:var(--gold)">Рост выручки YoY</td>
+                    <td style="text-align:center;color:var(--green)">+28%</td>
+                    <td style="text-align:center">+18%</td>
+                    <td style="text-align:center">+12%</td>
+                    <td style="text-align:center">+10%</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600;color:var(--gold)">Маржа чистой прибыли</td>
+                    <td style="text-align:center">7.3%</td>
+                    <td style="text-align:center">10%</td>
+                    <td style="text-align:center">12%</td>
+                    <td style="text-align:center;color:var(--green);font-weight:700">15%</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600;color:var(--gold)">Пользователи</td>
+                    <td style="text-align:center">100К+</td>
+                    <td style="text-align:center">130К</td>
+                    <td style="text-align:center">160К</td>
+                    <td style="text-align:center;color:var(--green);font-weight:700">200К</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600;color:var(--gold)">NRR (Net Revenue Retention)</td>
+                    <td style="text-align:center;color:var(--text3)">н/д</td>
+                    <td style="text-align:center">105%</td>
+                    <td style="text-align:center">108%</td>
+                    <td style="text-align:center;color:var(--green);font-weight:700">110%+</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600;color:var(--gold)">Churn (годовой)</td>
+                    <td style="text-align:center;color:var(--text3)">н/д</td>
+                    <td style="text-align:center">&lt;8%</td>
+                    <td style="text-align:center">&lt;6%</td>
+                    <td style="text-align:center;color:var(--green);font-weight:700">&lt;5%</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600;color:var(--gold)">CAC payback, мес</td>
+                    <td style="text-align:center;color:var(--text3)">н/д</td>
+                    <td style="text-align:center">&lt;18</td>
+                    <td style="text-align:center">&lt;15</td>
+                    <td style="text-align:center;color:var(--green);font-weight:700">&lt;12</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600;color:var(--gold)">Доля рынка</td>
+                    <td style="text-align:center">~13%</td>
+                    <td style="text-align:center">~15%</td>
+                    <td style="text-align:center">~17%</td>
+                    <td style="text-align:center;color:var(--green);font-weight:700">~20%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 4.3 Тепловая карта корреляций метрик -->
+    <h3 style="color:var(--gold);margin:36px 0 18px;font-size:1.15em">4.3&nbsp; Тепловая карта корреляций метрик</h3>
+
+    <div class="chart-container">
+        <h4 style="color:var(--gold);margin-bottom:4px;font-size:1.05em">Корреляционная матрица ключевых метрик</h4>
+        <p style="color:var(--text3);font-size:.82em;margin-bottom:18px">Взаимосвязь операционных и финансовых показателей B2B SaaS</p>
+
+        <div style="overflow-x:auto">
+            <table style="width:100%;min-width:760px;border-collapse:collapse;font-size:.82em">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;padding:8px 6px;min-width:100px"></th>
+                        <th style="padding:8px 6px;font-size:.85em;color:var(--text2)">ARR Growth</th>
+                        <th style="padding:8px 6px;font-size:.85em;color:var(--text2)">NRR</th>
+                        <th style="padding:8px 6px;font-size:.85em;color:var(--text2)">Churn</th>
+                        <th style="padding:8px 6px;font-size:.85em;color:var(--text2)">Маржа</th>
+                        <th style="padding:8px 6px;font-size:.85em;color:var(--text2)">Headcount</th>
+                        <th style="padding:8px 6px;font-size:.85em;color:var(--text2)">R&amp;D</th>
+                        <th style="padding:8px 6px;font-size:.85em;color:var(--text2)">Marketing</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ARR Growth row -->
+                    <tr>
+                        <td style="font-weight:600;color:var(--text);padding:8px 6px">ARR Growth</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(201,164,76,0.25);color:var(--gold);font-weight:800">1.00</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(61,184,106,0.2);color:var(--green)">0.82</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.2);color:var(--red)">&minus;0.65</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.45</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(61,184,106,0.2);color:var(--green)">0.71</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.68</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(61,184,106,0.2);color:var(--green)">0.75</td>
+                    </tr>
+                    <!-- NRR row -->
+                    <tr>
+                        <td style="font-weight:600;color:var(--text);padding:8px 6px">NRR</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(61,184,106,0.2);color:var(--green)">0.82</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(201,164,76,0.25);color:var(--gold);font-weight:800">1.00</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.2);color:var(--red)">&minus;0.78</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.55</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.42</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.58</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.48</td>
+                    </tr>
+                    <!-- Churn row -->
+                    <tr>
+                        <td style="font-weight:600;color:var(--text);padding:8px 6px">Churn</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.2);color:var(--red)">&minus;0.65</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.2);color:var(--red)">&minus;0.78</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(201,164,76,0.25);color:var(--gold);font-weight:800">1.00</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.2);color:var(--red)">&minus;0.52</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.2);color:var(--red)">&minus;0.30</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.2);color:var(--red)">&minus;0.45</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.2);color:var(--red)">&minus;0.38</td>
+                    </tr>
+                    <!-- Маржа row -->
+                    <tr>
+                        <td style="font-weight:600;color:var(--text);padding:8px 6px">Маржа</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.45</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.55</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.2);color:var(--red)">&minus;0.52</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(201,164,76,0.25);color:var(--gold);font-weight:800">1.00</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.2);color:var(--red)">&minus;0.35</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.1);color:var(--text3)">0.25</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.1);color:var(--text3)">0.15</td>
+                    </tr>
+                    <!-- Headcount row -->
+                    <tr>
+                        <td style="font-weight:600;color:var(--text);padding:8px 6px">Headcount</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(61,184,106,0.2);color:var(--green)">0.71</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.42</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.2);color:var(--red)">&minus;0.30</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.2);color:var(--red)">&minus;0.35</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(201,164,76,0.25);color:var(--gold);font-weight:800">1.00</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(61,184,106,0.2);color:var(--green)">0.80</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.55</td>
+                    </tr>
+                    <!-- R&D row -->
+                    <tr>
+                        <td style="font-weight:600;color:var(--text);padding:8px 6px">R&amp;D</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.68</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.58</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.2);color:var(--red)">&minus;0.45</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.1);color:var(--text3)">0.25</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(61,184,106,0.2);color:var(--green)">0.80</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(201,164,76,0.25);color:var(--gold);font-weight:800">1.00</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.40</td>
+                    </tr>
+                    <!-- Marketing row -->
+                    <tr>
+                        <td style="font-weight:600;color:var(--text);padding:8px 6px">Marketing</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(61,184,106,0.2);color:var(--green)">0.75</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.48</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.2);color:var(--red)">&minus;0.38</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(212,64,64,0.1);color:var(--text3)">0.15</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.55</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(232,196,106,0.15);color:var(--gold)">0.40</td>
+                        <td style="text-align:center;padding:8px 6px;background:rgba(201,164,76,0.25);color:var(--gold);font-weight:800">1.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="chart-legend" style="margin-top:14px;display:flex;gap:18px;flex-wrap:wrap;font-size:.78em">
+            <span><span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:rgba(61,184,106,0.3);vertical-align:middle;margin-right:4px"></span>Сильная корреляция (&ge;0.70)</span>
+            <span><span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:rgba(232,196,106,0.25);vertical-align:middle;margin-right:4px"></span>Средняя (0.40&ndash;0.69)</span>
+            <span><span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:rgba(212,64,64,0.15);vertical-align:middle;margin-right:4px"></span>Слабая (0&ndash;0.39)</span>
+            <span><span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:rgba(212,64,64,0.3);vertical-align:middle;margin-right:4px"></span>Отрицательная</span>
+        </div>
+
+        <div class="info-tip" style="margin-top:14px">
+            <strong>Ключевые выводы:</strong> Наибольшая корреляция между NRR и снижением Churn (&minus;0.78) подтверждает, что удержание клиентов — главный драйвер устойчивого роста. Инвестиции в R&amp;D и Headcount тесно связаны (0.80), что характерно для технологических B2B-компаний.
+        </div>
+    </div>
+
+    <!-- 4.4 Таймлайн внедрения (12 месяцев) -->
+    <h3 style="color:var(--gold);margin:36px 0 18px;font-size:1.15em">4.4&nbsp; Таймлайн внедрения (12 месяцев)</h3>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-date" style="color:var(--gold);font-weight:700">Q1 2026</div>
+            <div class="timeline-text">
+                <strong style="color:var(--text)">Месяцы 1-3: Фундамент</strong><br>
+                Аудит текущих метрик (CAC, LTV, Churn, NRR). Запуск SEO/контент-маркетинга. Публикация тарифных планов на сайте.
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date" style="color:var(--blue);font-weight:700">Q2 2026</div>
+            <div class="timeline-text">
+                <strong style="color:var(--text)">Месяцы 4-6: Разработка</strong><br>
+                MVP мобильного приложения (iOS + Android). Начало разработки AI-модуля предиктивной аналитики. Пилот в Казахстане (2-3 клиента).
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date" style="color:var(--green);font-weight:700">Q3 2026</div>
+            <div class="timeline-text">
+                <strong style="color:var(--text)">Месяцы 7-9: Масштабирование</strong><br>
+                Релиз мобильного приложения. Бета AI-модуля. Расширение команды маркетинга. Первые клиенты в Беларуси.
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date" style="color:#E67E22;font-weight:700">Q4 2026</div>
+            <div class="timeline-text">
+                <strong style="color:var(--text)">Месяцы 10-12: Результаты</strong><br>
+                Релиз AI-модулей. Масштабирование СНГ-экспансии. Оценка маржинальности — корректировка стратегии. Цель: 850М₽ ARR.
+            </div>
+        </div>
+    </div>
+
+    <div class="callout-green" style="margin-top:20px">
+        <strong>Итог стратегического раздела:</strong> Комбинация прозрачного прайсинга, AI-дифференциации, географической экспансии и оптимизации маржинальности позволяет КОТ достичь отметки 1 млрд ₽ ARR к 2027 году при сохранении лидерских позиций на российском рынке EHS-платформ.
+    </div>
+
+</div><!-- /.section #strategy -->
+<!-- ============================================================ -->
+<!-- PART V: ПРИЛОЖЕНИЯ                                          -->
+<!-- ============================================================ -->
+
+<div class="section" id="appendix">
+    <div class="section-head">
+        <span class="section-num">5</span>
+        <h2>Приложения</h2>
+    </div>
+
+    <!-- 5.1 Открытые вопросы -->
+    <div class="card">
+        <h3>Открытые вопросы — данные, которые не удалось верифицировать</h3>
+        <div style="overflow-x:auto">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Вопрос</th>
+                        <th>Почему важно</th>
+                        <th>Как получить</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Точная ARR/MRR</td>
+                        <td>Ключевой SaaS-метрик для оценки бизнеса</td>
+                        <td>Запрос к компании / раскрытие для инвесторов</td>
+                    </tr>
+                    <tr>
+                        <td>Churn rate (годовой)</td>
+                        <td>Индикатор удовлетворённости и sticky-продукта</td>
+                        <td>Внутренняя аналитика компании</td>
+                    </tr>
+                    <tr>
+                        <td>CAC (стоимость привлечения)</td>
+                        <td>Эффективность маркетинга и продаж</td>
+                        <td>Внутренние данные отдела маркетинга</td>
+                    </tr>
+                    <tr>
+                        <td>LTV (пожизненная ценность)</td>
+                        <td>Экономика юнит-экономики</td>
+                        <td>Расчёт по Churn и ARPU</td>
+                    </tr>
+                    <tr>
+                        <td>Детальное ценообразование</td>
+                        <td>Сравнение с конкурентами</td>
+                        <td>Запрос коммерческого предложения</td>
+                    </tr>
+                    <tr>
+                        <td>NPS (индекс лояльности)</td>
+                        <td>Удовлетворённость клиентов</td>
+                        <td>Проведение опроса</td>
+                    </tr>
+                    <tr>
+                        <td>Доля SaaS vs On-premise</td>
+                        <td>Модель монетизации</td>
+                        <td>Запрос к компании</td>
+                    </tr>
+                    <tr>
+                        <td>Retention по когортам</td>
+                        <td>Динамика удержания</td>
+                        <td>Внутренняя аналитика</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 5.2 Методология -->
+    <div class="card">
+        <h3>Методология</h3>
+
+        <p style="margin-bottom:10px"><strong>Источники данных:</strong></p>
+        <ul style="margin-bottom:20px">
+            <li>ФНС (api-fns.ru) — финансовая отчётность 2022-2024</li>
+            <li>Rusprofile — юридические данные, учредители, ОКВЭД</li>
+            <li>kot.cloud — официальный сайт продукта</li>
+            <li>sms-it.ru — сайт компании</li>
+            <li>Отраслевые СМИ — CNews, TAdviser, Cnews Analytics</li>
+            <li>hh.ru — вакансии и зарплаты</li>
+            <li>Сайты конкурентов — 1С, БРеалИТ, MD Audit, EcoStandard, SafetyCulture и др.</li>
+            <li>Открытые источники — пресс-релизы, интервью, конференции</li>
+        </ul>
+
+        <p style="margin-bottom:20px"><strong>Дата сбора данных:</strong> Февраль 2026</p>
+
+        <p style="margin-bottom:10px"><strong>Ограничения:</strong></p>
+        <ul>
+            <li style="color:var(--text2)">Доли рынка — экспертная оценка, точные данные не раскрываются компаниями</li>
+            <li style="color:var(--text2)">Финансовые данные конкурентов — ограничены публичной отчётностью ФНС</li>
+            <li style="color:var(--text2)">SaaS-метрики (Churn, NRR, CAC, LTV) — не раскрываются, использованы отраслевые бенчмарки</li>
+            <li style="color:var(--text2)">Ценообразование — основано на открытых источниках и коммерческих предложениях</li>
+            <li style="color:var(--text2)">Прогнозы — основаны на текущих трендах и могут отличаться от фактических</li>
+        </ul>
+    </div>
+
+    <!-- 5.3 Справка по формулам -->
+    <div class="card">
+        <h3>Справка по формулам и терминам</h3>
+        <div class="grid-2">
+            <div class="card" style="padding:16px">
+                <h3 style="font-size:0.9em;margin-bottom:6px;color:var(--gold)">ROA (Return on Assets)</h3>
+                <p style="color:var(--blue);font-size:0.85em;font-family:monospace;margin-bottom:6px">ROA = Чистая прибыль / Активы × 100%</p>
+                <p style="color:var(--text2);font-size:0.82em">Показывает эффективность использования активов компании.</p>
+            </div>
+            <div class="card" style="padding:16px">
+                <h3 style="font-size:0.9em;margin-bottom:6px;color:var(--gold)">EBITDA Margin</h3>
+                <p style="color:var(--blue);font-size:0.85em;font-family:monospace;margin-bottom:6px">EBITDA Margin = EBITDA / Выручка × 100%</p>
+                <p style="color:var(--text2);font-size:0.82em">Операционная рентабельность до вычета амортизации, процентов и налогов.</p>
+            </div>
+            <div class="card" style="padding:16px">
+                <h3 style="font-size:0.9em;margin-bottom:6px;color:var(--gold)">Выручка/сотрудник</h3>
+                <p style="color:var(--blue);font-size:0.85em;font-family:monospace;margin-bottom:6px">Выручка/сотрудник = Выручка / Кол-во сотрудников</p>
+                <p style="color:var(--text2);font-size:0.82em">Показатель производительности труда в компании.</p>
+            </div>
+            <div class="card" style="padding:16px">
+                <h3 style="font-size:0.9em;margin-bottom:6px;color:var(--gold)">NRR (Net Revenue Retention)</h3>
+                <p style="color:var(--blue);font-size:0.85em;font-family:monospace;margin-bottom:6px">NRR = (Выручка от существующих клиентов на конец периода) / (Выручка от них на начало) × 100%</p>
+                <p style="color:var(--text2);font-size:0.82em">Если >100% — клиенты покупают больше.</p>
+            </div>
+            <div class="card" style="padding:16px">
+                <h3 style="font-size:0.9em;margin-bottom:6px;color:var(--gold)">CAC (Customer Acquisition Cost)</h3>
+                <p style="color:var(--blue);font-size:0.85em;font-family:monospace;margin-bottom:6px">CAC = (Расходы на маркетинг + продажи) / Кол-во новых клиентов</p>
+                <p style="color:var(--text2);font-size:0.82em">Стоимость привлечения одного клиента.</p>
+            </div>
+            <div class="card" style="padding:16px">
+                <h3 style="font-size:0.9em;margin-bottom:6px;color:var(--gold)">LTV (Lifetime Value)</h3>
+                <p style="color:var(--blue);font-size:0.85em;font-family:monospace;margin-bottom:6px">LTV = ARPU × Gross Margin / Churn Rate</p>
+                <p style="color:var(--text2);font-size:0.82em">Пожизненная ценность клиента.</p>
+            </div>
+            <div class="card" style="padding:16px">
+                <h3 style="font-size:0.9em;margin-bottom:6px;color:var(--gold)">Churn Rate</h3>
+                <p style="color:var(--blue);font-size:0.85em;font-family:monospace;margin-bottom:6px">Churn = Кол-во ушедших клиентов / Общее кол-во клиентов × 100%</p>
+                <p style="color:var(--text2);font-size:0.82em">Показатель оттока.</p>
+            </div>
+            <div class="card" style="padding:16px">
+                <h3 style="font-size:0.9em;margin-bottom:6px;color:var(--gold)">CAGR</h3>
+                <p style="color:var(--blue);font-size:0.85em;font-family:monospace;margin-bottom:6px">CAGR = (Значение_конечное / Значение_начальное)^(1/n) - 1</p>
+                <p style="color:var(--text2);font-size:0.82em">Среднегодовой темп роста.</p>
+            </div>
+            <div class="card" style="padding:16px">
+                <h3 style="font-size:0.9em;margin-bottom:6px;color:var(--gold)">ARR (Annual Recurring Revenue)</h3>
+                <p style="color:var(--blue);font-size:0.85em;font-family:monospace;margin-bottom:6px">ARR = MRR × 12</p>
+                <p style="color:var(--text2);font-size:0.82em">Годовая повторяющаяся выручка от подписок.</p>
+            </div>
+            <div class="card" style="padding:16px">
+                <h3 style="font-size:0.9em;margin-bottom:6px;color:var(--gold)">ARPU (Average Revenue Per User)</h3>
+                <p style="color:var(--blue);font-size:0.85em;font-family:monospace;margin-bottom:6px">ARPU = Выручка / Кол-во пользователей</p>
+                <p style="color:var(--text2);font-size:0.82em">Средний доход на пользователя.</p>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /.section #appendix -->
+
+</div><!-- /.container -->
+</div><!-- /#tab-full -->
+
+<footer>
+    <p>КОТ (kot.cloud) — СМС-ИТ · Конкурентный и SWOT-анализ · Февраль 2026</p>
+    <p style="margin-top:8px">Данные: ФНС, Rusprofile, открытые источники · Визуализация: inline SVG</p>
+    <p style="margin-top:8px;color:var(--text3)">Этот отчёт подготовлен на основе открытых данных и не является инвестиционной рекомендацией</p>
+</footer>
+
+<script>
+function switchTab(tabName) {
+    // Hide all tab contents
+    document.querySelectorAll('.tab-content').forEach(function(el) {
+        el.classList.remove('active');
+    });
+    // Deactivate all tab buttons
+    document.querySelectorAll('.tab-btn').forEach(function(el) {
+        el.classList.remove('active');
+    });
+    // Show selected tab
+    var tabId = 'tab-' + tabName;
+    var tabEl = document.getElementById(tabId);
+    if (tabEl) tabEl.classList.add('active');
+    // Activate button
+    var buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(function(btn) {
+        if (tabName === 'overview' && btn.textContent.trim() === 'Обзор') {
+            btn.classList.add('active');
+        } else if (tabName === 'full' && btn.textContent.trim() === 'Полный анализ') {
+            btn.classList.add('active');
+        }
+    });
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
