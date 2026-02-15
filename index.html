@@ -832,6 +832,136 @@ footer {
     .ov-stat .num { font-size: 1.6em; }
     .metric .val { font-size: 1.5em; }
 }
+
+/* ===== PHONE: max-width 480px ===== */
+@media (max-width: 480px) {
+    body { font-size: 14px; line-height: 1.55; }
+    .container { padding: 10px; }
+
+    /* Hero */
+    .hero { padding: 32px 12px 24px; }
+    .hero h1 { font-size: 1.3em; letter-spacing: 0.06em; }
+    .hero .sub { font-size: 0.82em; }
+    .hero .date { font-size: 0.72em; }
+    .hero .badges { gap: 6px; }
+    .hero .hbadge { padding: 4px 10px; font-size: 0.7em; }
+
+    /* Tab bar */
+    .tab-bar { gap: 0; }
+    .tab-btn { padding: 10px 16px; font-size: 0.8em; letter-spacing: 0.03em; }
+
+    /* Sections */
+    .section { margin: 28px 0; }
+    .section-head { gap: 10px; margin-bottom: 16px; padding-bottom: 8px; }
+    .section-num { width: 28px; height: 28px; min-width: 28px; font-size: 0.8em; }
+    .section-head h2 { font-size: 1em; }
+    .section-desc { font-size: 0.85em; }
+
+    /* Force ALL inline grids to single column on phones */
+    [style*="grid-template-columns:repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+    [style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; gap: 8px !important; }
+    [style*="grid-template-columns:repeat(2"] { grid-template-columns: 1fr !important; gap: 8px !important; }
+
+    /* Grid classes */
+    .grid-2, .grid-3, .grid-4,
+    .ov-grid, .ov-grid-2, .ov-grid-3, .ov-grid-5,
+    .works-grid, .swot-grid { grid-template-columns: 1fr !important; }
+
+    /* Cards */
+    .card { padding: 14px; margin: 10px 0; border-radius: 8px; }
+    .card h3 { font-size: 0.95em; }
+    .comp-card { padding: 14px; }
+    .comp-card .name { font-size: 1em; }
+    .comp-card .stats { gap: 8px; flex-wrap: wrap; }
+    .comp-card .stat .v { font-size: 1.1em; }
+    .comp-card .stat .l { font-size: 0.68em; }
+
+    /* Metrics */
+    .ov-stat { padding: 12px 8px; }
+    .ov-stat .num { font-size: 1.3em; }
+    .ov-stat .lbl { font-size: 0.7em; }
+    .metric { padding: 12px 8px; }
+    .metric .val { font-size: 1.3em; }
+    .metric .lbl { font-size: 0.72em; }
+
+    /* Overview verdict */
+    .ov-verdict, [id="ov-verdict"] { padding: 16px !important; }
+    .ov-verdict p, [id="ov-verdict"] p { font-size: 0.9em !important; }
+
+    /* Works items */
+    .works-item { padding: 12px !important; }
+    .works-item h4 { font-size: 0.88em !important; }
+    .works-item p { font-size: 0.8em !important; }
+
+    /* Tables: horizontal scroll */
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+    thead { display: table-header-group; }
+    th, td { padding: 8px 10px; font-size: 0.78em; min-width: 80px; }
+    th { font-size: 0.72em; }
+
+    /* Charts */
+    .chart-container { padding: 14px 8px; border-radius: 10px; margin: 14px 0; }
+    .chart-container h3 { font-size: 0.95em; }
+    .chart-container .subtitle { font-size: 0.75em; margin-bottom: 14px; }
+    .chart-legend { gap: 8px 14px; margin-top: 12px; padding-top: 10px; }
+    .chart-legend .leg-item { font-size: 0.7em; }
+    .chart-legend .leg-swatch { width: 10px; height: 10px; }
+
+    /* SVG charts: ensure they don't overflow */
+    .chart-svg { max-width: 100%; height: auto; }
+    svg text { font-size: 80%; }
+
+    /* SWOT */
+    .swot-box { padding: 14px; }
+    .swot-box h4 { font-size: 0.85em; }
+    .swot-box li { font-size: 0.82em; padding: 3px 0; }
+
+    /* Info tip */
+    .info-tip { padding: 8px 10px; font-size: 0.78em; }
+    .info-tip .ii { width: 16px; height: 16px; font-size: 0.75em; }
+
+    /* Callout */
+    .callout { padding: 14px 16px; border-radius: 8px; }
+    .callout h4 { font-size: 0.9em; }
+    .callout p, .callout li { font-size: 0.82em; }
+
+    /* Badges */
+    .badge { padding: 2px 8px; font-size: 0.7em; }
+
+    /* Timeline */
+    .timeline { padding-left: 14px; }
+    .timeline-date { font-size: 0.82em; }
+    .timeline-text { font-size: 0.82em; }
+
+    /* Bar rows */
+    .bar-row { gap: 6px; }
+    .bar-label { font-size: 0.72em; min-width: 100%; text-align: left; }
+    .bar-fill { font-size: 0.7em; padding: 0 6px; }
+    .bar-val { font-size: 0.72em; width: auto; }
+
+    /* Footer */
+    footer { padding: 24px 10px; font-size: 0.75em; }
+
+    /* Strategy cards inline styles override */
+    .card[style*="border-left:4px"] { padding: 14px !important; padding-left: 18px !important; }
+
+    /* Heatmap table cells */
+    .hm td, .hm th { min-width: 60px; padding: 6px 8px; }
+
+    /* Correlation matrix */
+    .corr-high, .corr-med, .corr-low, .corr-neg { font-size: 0.75em; padding: 6px; }
+}
+
+/* ===== VERY SMALL PHONE: max-width 360px ===== */
+@media (max-width: 360px) {
+    .hero h1 { font-size: 1.1em; }
+    .hero .sub { font-size: 0.75em; }
+    .tab-btn { padding: 8px 12px; font-size: 0.75em; }
+    .ov-stat .num { font-size: 1.1em; }
+    .section-head h2 { font-size: 0.9em; }
+    [style*="grid-template-columns:repeat(4"] { grid-template-columns: 1fr !important; }
+    th, td { padding: 6px 8px; font-size: 0.72em; min-width: 70px; }
+}
 </style>
 </head>
 <body>
