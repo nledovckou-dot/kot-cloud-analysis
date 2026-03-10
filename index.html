@@ -962,6 +962,62 @@ footer {
     [style*="grid-template-columns:repeat(4"] { grid-template-columns: 1fr !important; }
     th, td { padding: 6px 8px; font-size: 0.72em; min-width: 70px; }
 }
+
+/* ===== Update Highlights ===== */
+.updated {
+    position: relative;
+    border: 2px solid rgba(74,220,160,0.6) !important;
+    box-shadow: 0 0 16px rgba(74,220,160,0.12);
+}
+.updated::before {
+    content: attr(data-update-label);
+    position: absolute;
+    top: -11px;
+    right: 16px;
+    background: #1a3a2a;
+    color: #4ADCA0;
+    font-size: 0.68em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(74,220,160,0.4);
+    z-index: 2;
+}
+body.hide-updates .updated {
+    border-color: var(--border) !important;
+    box-shadow: none;
+}
+body.hide-updates .updated::before {
+    display: none;
+}
+.toggle-updates-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    background: #1a3a2a;
+    color: #4ADCA0;
+    border: 1px solid rgba(74,220,160,0.4);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 0.82em;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
+}
+.toggle-updates-btn:hover {
+    background: #1f4a34;
+    box-shadow: 0 0 20px rgba(74,220,160,0.2);
+}
+body.hide-updates .toggle-updates-btn {
+    background: var(--card);
+    color: var(--text3);
+    border-color: var(--border);
+}
 </style>
 </head>
 <body>
@@ -1250,12 +1306,12 @@ footer {
     </div>
 
     <!-- Новые регуляторные тренды (с 1 марта 2026) — по данным СОЦПРОФ -->
-    <div class="info-tip" style="background:rgba(201,164,76,0.08);border-left:4px solid var(--gold);padding:14px 18px;border-radius:8px;margin-bottom:16px">
+    <div class="info-tip updated" data-update-label="НОВОЕ" style="background:rgba(201,164,76,0.08);border-left:4px solid var(--gold);padding:14px 18px;border-radius:8px;margin-bottom:16px">
         <span style="color:var(--gold);font-weight:700">Обновление от марта 2026</span>
         <span style="color:var(--text2);font-size:0.95em"> &mdash; с 1 марта 2026 года вступают в силу масштабные изменения в регулировании охраны труда (источник: СОЦПРОФ, 07.03.2026)</span>
     </div>
 
-    <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px">
+    <div class="grid-3 updated" data-update-label="НОВОЕ — 5 трендов СОЦПРОФ" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px">
 
         <div class="card" style="border-left:4px solid var(--red);padding:18px 20px">
             <h4 style="color:var(--red);margin-bottom:8px;font-size:1em">Новый профстандарт специалиста ОТ (с 01.03.2026)</h4>
@@ -1280,7 +1336,7 @@ footer {
 
     </div>
 
-    <div class="grid-2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:32px">
+    <div class="grid-2 updated" data-update-label="НОВОЕ" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:32px">
 
         <div class="card" style="border-left:4px solid var(--teal);padding:18px 20px">
             <h4 style="color:var(--teal);margin-bottom:8px;font-size:1em">Микротравмы и психосоциальные риски</h4>
@@ -1485,7 +1541,7 @@ footer {
         </div>
 
         <!-- Обоснование ценовых оценок -->
-        <div class="info-tip" style="margin-top:16px;background:rgba(74,143,224,0.06);border-left:4px solid var(--blue);padding:14px 18px;border-radius:8px">
+        <div class="info-tip updated" data-update-label="НОВОЕ — методология цен" style="margin-top:16px;background:rgba(74,143,224,0.06);border-left:4px solid var(--blue);padding:14px 18px;border-radius:8px">
             <span style="color:var(--blue);font-weight:700">&#9432; Методология ценовой оценки</span>
             <div style="color:var(--text2);font-size:0.88em;line-height:1.7;margin-top:8px">
                 <p style="margin-bottom:8px"><strong style="color:var(--text)">1С:EHS КОРП (позиция &laquo;Премиум&raquo;):</strong> Оценка основана на стоимости внедрения от 5 млн ₽ (публичные данные с 1c-prombez.ru), необходимости покупки лицензий на платформу 1С:Предприятие, стоимости услуг 1С-партнёров (внедрение, кастомизация, поддержка). Полная стоимость владения (TCO) для enterprise-клиента: 10&ndash;50 млн ₽ в первые 3 года.</p>
@@ -1511,7 +1567,7 @@ footer {
         <!-- Пара 1 -->
         <div class="grid-2">
             <!-- 1. 1С:EHS КОРП -->
-            <div class="comp-card" style="border-left:3px solid var(--red)">
+            <div class="comp-card updated" data-update-label="ОБНОВЛЕНО — объединена с 1С:ПБ" style="border-left:3px solid var(--red)">
                 <div class="name">1С:EHS КОРП <span class="badge b-red">Лидер</span></div>
                 <div class="meta">On-premise + Cloud &middot; Экосистема 1С &middot; Enterprise + Mid-market</div>
                 <div class="stats">
@@ -1669,7 +1725,7 @@ footer {
     </div>
 
     <!-- ─── 2.2b Дополнительные конкуренты (расширенный анализ) ─── -->
-    <div class="section">
+    <div class="section updated" data-update-label="НОВОЕ — 13 конкурентов">
         <div class="section-head">
             <span class="section-num">2</span>
             <h2>Расширенный конкурентный ландшафт</h2>
@@ -2180,7 +2236,7 @@ footer {
                 <div style="font-size:2.2em;font-weight:700;color:var(--gold)">12 / 14</div>
                 <div style="font-size:0.82em;color:var(--text3);margin-top:4px">КОТ &mdash; полных модулей</div>
             </div>
-            <div class="card" style="text-align:center;border-top:3px solid var(--red)">
+            <div class="card updated" data-update-label="ОБНОВЛЕНО — было 11/14" style="text-align:center;border-top:3px solid var(--red)">
                 <div style="font-size:2.2em;font-weight:700;color:var(--red)">12 / 14</div>
                 <div style="font-size:0.82em;color:var(--text3);margin-top:4px">1С:EHS КОРП &mdash; полных модулей</div>
             </div>
@@ -2190,7 +2246,7 @@ footer {
             </div>
         </div>
 
-        <div class="card" style="border-left:4px solid var(--gold);padding:16px 20px;margin-top:16px">
+        <div class="card updated" data-update-label="ОБНОВЛЕНО — 1С:EHS аудиты, мобильное, AI" style="border-left:4px solid var(--gold);padding:16px 20px;margin-top:16px">
             <p style="color:var(--text2);font-size:0.92em;line-height:1.7;margin:0">
                 <strong style="color:var(--gold)">Ключевой вывод:</strong> КОТ и 1С:EHS КОРП идут на равных по широте покрытия модулей (по 12 из 14 полностью реализованы). 1С:EHS обновил позиции: добавил полноценный модуль аудитов/проверок, мобильные технологии и элементы AI (видеоаналитика, чат-бот). Основные зоны роста КОТ &mdash; <strong style="color:var(--orange)">мобильное приложение</strong> (пока частично) и <strong style="color:var(--orange)">AI-модули</strong> (в разработке). SafetyCulture лидирует именно в этих двух направлениях.
             </p>
@@ -2538,7 +2594,7 @@ footer {
 </div>
 
 <!-- ============ 3.3 Продуктовый анализ КОТ ============ -->
-<div class="section" id="sec-3-3">
+<div class="section updated" data-update-label="ОБНОВЛЕНО — удалён экомониторинг, 13+ модулей" id="sec-3-3">
     <div class="section-head">
         <span class="section-num">3.3</span>
         <h2>Продуктовый анализ: платформа КОТ</h2>
@@ -2681,7 +2737,7 @@ footer {
         <h2>Доля рынка</h2>
     </div>
 
-    <div class="chart-container">
+    <div class="chart-container updated" data-update-label="ОБНОВЛЕНО — 1С:ПБ объединена с 1С:EHS, доли пересчитаны">
         <h3>Оценка долей рынка OHS-tech в России</h3>
         <div class="subtitle">По выручке от продуктов охраны труда, 2024 (экспертная оценка)</div>
         <svg class="chart-svg" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
@@ -2786,7 +2842,7 @@ footer {
     </div>
 
     <!-- Детализация категории "Прочие" -->
-    <div class="card" style="margin-top:16px;border-left:4px solid #3D3548">
+    <div class="card updated" data-update-label="НОВОЕ — расшифровка «Прочие»" style="margin-top:16px;border-left:4px solid #3D3548">
         <h3 style="margin-bottom:12px;color:var(--text2)">Состав категории &laquo;Прочие&raquo; (18%)</h3>
         <p style="color:var(--text2);font-size:0.88em;line-height:1.65;margin-bottom:12px">
             Категория &laquo;Прочие&raquo; включает 20+ нишевых игроков с долей менее 3% каждый. Основные из них:
@@ -3338,7 +3394,20 @@ function switchTab(tabName) {
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// Toggle update highlights
+function toggleUpdates() {
+    document.body.classList.toggle('hide-updates');
+    var btn = document.getElementById('toggleUpdatesBtn');
+    if (document.body.classList.contains('hide-updates')) {
+        btn.textContent = 'Показать изменения';
+    } else {
+        btn.textContent = 'Скрыть изменения';
+    }
+}
 </script>
+
+<button class="toggle-updates-btn" id="toggleUpdatesBtn" onclick="toggleUpdates()">Скрыть изменения</button>
 
 </body>
 </html>
